@@ -1,0 +1,1835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="CROPS Circle indexes autonomous technologies — censorship resistant, open source, private, secure.">
+<link rel="stylesheet" href="https://use.typekit.net/vyt8wbv.css">
+<title>CROPS Circle</title>
+<style>
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg:   #0a0a0a;
+  --text: #e8e4df;
+  --fg:   #e8e4df;
+  --link: #7a9e7e;
+  --dim:  #5a6e5c;
+  --hr:   #2a2a2a;
+  --mono: 'Courier New', Courier, monospace;
+  --sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --display: 'halogen', sans-serif;
+  --script: 'flood-std', sans-serif;
+}
+
+html {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 1rem;
+  line-height: 1.7;
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+body {
+  padding: 0 0 4rem;
+}
+
+main {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Full-width hero */
+.hero {
+  width: 100%;
+  min-height: min(92vh, 920px);
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  align-items: stretch;
+  padding: 1.25rem clamp(1rem, 4vw, 2.5rem) 1.5rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--hr);
+}
+
+.hero-top {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 1rem;
+  min-height: 120px;
+}
+
+.hero-brand {
+  margin: 0;
+  font-family: var(--display);
+  font-weight: 900;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text);
+  font-size: 1rem;
+  line-height: 0.95;
+}
+
+.hero-id {
+  width: 60px;
+  height: 60px;
+  flex-shrink: 0;
+  object-fit: contain;
+}
+
+.hero-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 0.5rem;
+  text-align: center;
+}
+
+.hero-center .site-title {
+  margin: 0;
+}
+
+.hero-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.hero-tagline {
+  margin: 0;
+  font-family: var(--script);
+  font-size: clamp(1.35rem, 3.5vw, 2.25rem);
+  line-height: 1.15;
+  color: var(--text);
+}
+
+.hero-index-link {
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.poem {
+  font-family: var(--sans);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 2.5rem;
+}
+.poem p {
+  margin-bottom: 0.15rem;
+}
+.poem .gap {
+  margin-top: 1.3rem;
+}
+.poem .i1 { padding-left: 3ch; }
+.poem .i2 { padding-left: 6ch; }
+.poem .i3 { padding-left: 9ch; }
+.poem .faded { color: var(--dim); }
+.poem .loud {
+  font-size: 1.5rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+}
+.poem .med {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+.poem .mono {
+  font-family: var(--mono);
+  font-size: 0.88em;
+  color: var(--link);
+}
+.poem .alien-word {
+  display: block;
+  font-size: 2.2rem;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  margin: 0.1rem 0;
+}
+.poem .def {
+  font-size: 0.82rem;
+  color: var(--link);
+  font-weight: 400;
+  margin-left: 1.2ch;
+}
+.poem .crops-letter {
+  color: var(--link);
+}
+
+.site-title {
+  font-size: clamp(3rem, 14vw, 9rem);
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  line-height: 0.92;
+  color: var(--fg);
+  text-transform: uppercase;
+  display: block;
+}
+.site-title .word-circle {
+  color: var(--link);
+}
+
+@media (max-width: 480px) {
+  .site-title { font-size: clamp(2.4rem, 16vw, 4rem); }
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+pre.acronym {
+  font-family: var(--display);
+  white-space: pre;
+  margin: 1rem 0 1rem 1.5rem;
+  line-height: 1.8;
+}
+
+h1 {
+  font-family: var(--display);
+  font-size: 0.85rem;
+  font-weight: 900;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text);
+  margin-bottom: 1.25rem;
+}
+
+h2 {
+  font-family: var(--display);
+  font-size: 0.85rem;
+  font-weight: 900;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text);
+  margin-bottom: 1.25rem;
+}
+
+.flood { 
+  font-family: var(--script);
+  font-size: 2rem;
+}
+
+
+nav ul {
+  list-style: none;
+  margin: 0.5rem 0 0;
+}
+
+nav ul li {
+  margin-bottom: 0.3rem;
+}
+
+nav ul li::before {
+  content: '· ';
+  color: var(--dim);
+}
+
+a {
+  color: var(--link);
+  text-decoration: none;
+}
+
+a:hover,
+a:focus {
+  text-decoration: underline;
+}
+
+a:focus {
+  outline: 1px dotted var(--link);
+  outline-offset: 2px;
+}
+
+dl {
+  margin-bottom: 1.5rem;
+}
+
+dt {
+  font-family: var(--mono);
+  font-size: 0.9rem;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+  margin-top: 1.5rem;
+  color: var(--text);
+}
+
+dd {
+  margin-left: 2ch;
+}
+
+dd.desc {
+  margin-top: 0.15rem;
+  line-height: 1.6;
+}
+
+dd.url {
+  margin-top: 0.2rem;
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  color: var(--dim);
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+dd.url a {
+  color: var(--dim);
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+dd.url a:hover,
+dd.url a:focus {
+  color: var(--link);
+  text-decoration: underline;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid var(--hr);
+  margin: 2.5rem 0;
+}
+
+section {
+  margin-bottom: 1rem;
+}
+
+footer {
+  margin-top: 2rem;
+  font-size: 0.82rem;
+  color: var(--dim);
+  line-height: 1.8;
+}
+
+footer p {
+  margin-bottom: 0.25rem;
+}
+
+@media (max-width: 480px) {
+  .poem .loud { font-size: 1.15rem; }
+  .poem .alien-word { font-size: 1.6rem; }
+}
+
+.footer-statement {
+  font-size: 0.92rem;
+  color: var(--text);
+  line-height: 1.7;
+}
+
+.footer-meta {
+  margin-top: 2.5rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--hr);
+}
+
+.footer-pr {
+  margin-top: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.55rem;
+}
+
+.pr-button {
+  display: inline-block;
+  padding: 0.55rem 1rem;
+  border: 1px solid var(--link);
+  color: var(--link);
+  background: transparent;
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.12s, color 0.12s;
+}
+
+.pr-button:hover,
+.pr-button:focus {
+  background: var(--link);
+  color: var(--bg);
+  text-decoration: none;
+  outline: none;
+}
+
+.pr-explainer {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--dim);
+  letter-spacing: 0.05em;
+}
+
+/* ── Questionnaire ──────────────────────────── */
+.quiz input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+.quiz-greeting {
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  color: var(--dim);
+  letter-spacing: 0.08em;
+  margin-bottom: 0.3rem;
+}
+
+.quiz-question {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 1.4rem;
+  letter-spacing: -0.01em;
+}
+
+.quiz-launcher {
+  padding: 1rem 0 0.5rem;
+}
+
+.quiz-launch-button {
+  display: inline-block;
+  margin: 0.25rem 0 1rem;
+  padding: 0.7rem 1.6rem;
+  border: 1px solid var(--link);
+  color: var(--link);
+  background: transparent;
+  font-family: var(--mono);
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.12s, color 0.12s;
+  user-select: none;
+}
+
+.quiz-launch-button:hover,
+.quiz-launch-button:focus {
+  background: var(--link);
+  color: var(--bg);
+  outline: none;
+}
+
+.quiz-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  padding: 2rem 1rem;
+  overflow-y: auto;
+}
+
+.quiz-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.88);
+  cursor: pointer;
+  z-index: 0;
+}
+
+.quiz-modal-content {
+  position: relative;
+  z-index: 1;
+  max-width: 640px;
+  margin: 0 auto;
+  background: var(--bg);
+  border: 1px solid var(--hr);
+  padding: 1rem 1.5rem 2rem;
+}
+
+.quiz-modal-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: -0.25rem -0.5rem 1rem;
+  min-height: 1.75rem;
+}
+
+.quiz-back,
+.quiz-close {
+  cursor: pointer;
+  user-select: none;
+  font-family: var(--mono);
+  color: var(--dim);
+  padding: 0.4rem 0.6rem;
+  transition: color 0.12s;
+}
+
+.quiz-back {
+  font-size: 0.82rem;
+  letter-spacing: 0.05em;
+  visibility: hidden;
+}
+
+.quiz-close {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.quiz-back:hover,
+.quiz-close:hover {
+  color: var(--link);
+}
+
+.quiz-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin-bottom: 1.25rem;
+}
+
+.quiz-options label {
+  display: block;
+  cursor: pointer;
+  padding: 0.5rem 0.85rem;
+  border: 1px solid var(--hr);
+  font-size: 0.92rem;
+  color: var(--text);
+  transition: border-color 0.12s, color 0.12s, background 0.12s;
+  user-select: none;
+}
+
+.quiz-options label::before {
+  content: '› ';
+  color: var(--dim);
+  font-family: var(--mono);
+}
+
+.quiz-options label:hover {
+  border-color: var(--link);
+  color: var(--link);
+}
+
+.quiz-options label:hover::before {
+  color: var(--link);
+}
+
+.quiz-browse-all {
+  font-size: 0.82rem;
+  color: var(--dim);
+  margin-top: 0.25rem;
+}
+
+.quiz-filter-status {
+  display: none;
+  margin: 0.4rem 0 0.5rem;
+  font-size: 0.8rem;
+  color: var(--dim);
+}
+
+.quiz-clear-button {
+  display: none;
+  margin: 0 0 0.75rem;
+  padding: 0.45rem 0.7rem;
+  border: 1px solid var(--hr);
+  color: var(--text);
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+/* Modal visibility — driven by quiz-open radio state */
+.quiz-shell { display: none; }
+
+#quiz-open:checked ~ .quiz-modal {
+  display: block;
+}
+
+#quiz-open:checked ~ .quiz-modal .quiz-shell {
+  display: block;
+}
+
+/* Answer panels */
+.quiz-answer { display: none; }
+
+#need-communicate:checked ~ .quiz-modal .ans-communicate,
+#need-anonymous:checked   ~ .quiz-modal .ans-anonymous,
+#need-device:checked      ~ .quiz-modal .ans-device,
+#need-data:checked        ~ .quiz-modal .ans-data,
+#need-money:checked       ~ .quiz-modal .ans-money,
+#need-browse:checked      ~ .quiz-modal .ans-browse,
+#need-infra:checked       ~ .quiz-modal .ans-infra,
+#need-build:checked       ~ .quiz-modal .ans-build,
+#need-ai:checked          ~ .quiz-modal .ans-ai,
+#need-govern:checked      ~ .quiz-modal .ans-govern {
+  display: block;
+}
+
+/* Show clear filter controls when a filter is selected. */
+#need-communicate:checked ~ .quiz-launcher .quiz-filter-status,
+#need-anonymous:checked   ~ .quiz-launcher .quiz-filter-status,
+#need-device:checked      ~ .quiz-launcher .quiz-filter-status,
+#need-data:checked        ~ .quiz-launcher .quiz-filter-status,
+#need-money:checked       ~ .quiz-launcher .quiz-filter-status,
+#need-browse:checked      ~ .quiz-launcher .quiz-filter-status,
+#need-infra:checked       ~ .quiz-launcher .quiz-filter-status,
+#need-build:checked       ~ .quiz-launcher .quiz-filter-status,
+#need-ai:checked          ~ .quiz-launcher .quiz-filter-status,
+#need-govern:checked      ~ .quiz-launcher .quiz-filter-status,
+#need-communicate:checked ~ .quiz-launcher .quiz-clear-button,
+#need-anonymous:checked   ~ .quiz-launcher .quiz-clear-button,
+#need-device:checked      ~ .quiz-launcher .quiz-clear-button,
+#need-data:checked        ~ .quiz-launcher .quiz-clear-button,
+#need-money:checked       ~ .quiz-launcher .quiz-clear-button,
+#need-browse:checked      ~ .quiz-launcher .quiz-clear-button,
+#need-infra:checked       ~ .quiz-launcher .quiz-clear-button,
+#need-build:checked       ~ .quiz-launcher .quiz-clear-button,
+#need-ai:checked          ~ .quiz-launcher .quiz-clear-button,
+#need-govern:checked      ~ .quiz-launcher .quiz-clear-button {
+  display: inline-block;
+}
+
+/* Back control is not needed in the new filter flow. */
+.quiz-back {
+  display: none;
+}
+
+.ans-label {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--dim);
+  margin-bottom: 1rem;
+}
+
+.ans-more {
+  margin-top: 1.25rem;
+  font-size: 0.82rem;
+  color: var(--dim);
+}
+
+/* ── Mobile + touch optimizations ──────────────────────────── */
+
+/* Defeat sticky-hover on touch devices: iOS keeps :hover styles applied
+   after a tap until the user taps elsewhere. Reset hover-only visuals. */
+@media (hover: none) {
+  .quiz-options label:hover {
+    border-color: var(--hr);
+    color: var(--text);
+    background: transparent;
+  }
+  .quiz-options label:hover::before {
+    color: var(--dim);
+  }
+  .quiz-launch-button:hover,
+  .pr-button:hover {
+    background: transparent;
+    color: var(--link);
+  }
+  .quiz-back:hover,
+  .quiz-close:hover {
+    color: var(--dim);
+  }
+  a:hover {
+    text-decoration: none;
+  }
+  dd.url a:hover {
+    color: var(--dim);
+    text-decoration: none;
+  }
+}
+
+/* Lock body scroll while the modal is open (no JS, uses :has). */
+html:has(#quiz-open:checked) {
+  overflow: hidden;
+}
+
+/* Filter complete index sections by selected quiz need. */
+html:has(#need-communicate:checked) #hardware,
+html:has(#need-communicate:checked) #os,
+html:has(#need-communicate:checked) #networking,
+html:has(#need-communicate:checked) #data,
+html:has(#need-communicate:checked) #identity,
+html:has(#need-communicate:checked) #money,
+html:has(#need-communicate:checked) #search,
+html:has(#need-communicate:checked) #development,
+html:has(#need-communicate:checked) #ai,
+html:has(#need-communicate:checked) #governance,
+html:has(#need-anonymous:checked) #hardware,
+html:has(#need-anonymous:checked) #communication,
+html:has(#need-anonymous:checked) #data,
+html:has(#need-anonymous:checked) #identity,
+html:has(#need-anonymous:checked) #money,
+html:has(#need-anonymous:checked) #search,
+html:has(#need-anonymous:checked) #development,
+html:has(#need-anonymous:checked) #ai,
+html:has(#need-anonymous:checked) #governance,
+html:has(#need-device:checked) #communication,
+html:has(#need-device:checked) #networking,
+html:has(#need-device:checked) #data,
+html:has(#need-device:checked) #identity,
+html:has(#need-device:checked) #money,
+html:has(#need-device:checked) #search,
+html:has(#need-device:checked) #development,
+html:has(#need-device:checked) #ai,
+html:has(#need-device:checked) #governance,
+html:has(#need-data:checked) #hardware,
+html:has(#need-data:checked) #os,
+html:has(#need-data:checked) #communication,
+html:has(#need-data:checked) #networking,
+html:has(#need-data:checked) #identity,
+html:has(#need-data:checked) #money,
+html:has(#need-data:checked) #search,
+html:has(#need-data:checked) #development,
+html:has(#need-data:checked) #ai,
+html:has(#need-data:checked) #governance,
+html:has(#need-money:checked) #hardware,
+html:has(#need-money:checked) #os,
+html:has(#need-money:checked) #communication,
+html:has(#need-money:checked) #networking,
+html:has(#need-money:checked) #data,
+html:has(#need-money:checked) #identity,
+html:has(#need-money:checked) #search,
+html:has(#need-money:checked) #development,
+html:has(#need-money:checked) #ai,
+html:has(#need-money:checked) #governance,
+html:has(#need-browse:checked) #hardware,
+html:has(#need-browse:checked) #os,
+html:has(#need-browse:checked) #communication,
+html:has(#need-browse:checked) #networking,
+html:has(#need-browse:checked) #data,
+html:has(#need-browse:checked) #identity,
+html:has(#need-browse:checked) #money,
+html:has(#need-browse:checked) #development,
+html:has(#need-browse:checked) #ai,
+html:has(#need-browse:checked) #governance,
+html:has(#need-infra:checked) #os,
+html:has(#need-infra:checked) #communication,
+html:has(#need-infra:checked) #data,
+html:has(#need-infra:checked) #identity,
+html:has(#need-infra:checked) #money,
+html:has(#need-infra:checked) #search,
+html:has(#need-infra:checked) #development,
+html:has(#need-infra:checked) #ai,
+html:has(#need-infra:checked) #governance,
+html:has(#need-build:checked) #hardware,
+html:has(#need-build:checked) #os,
+html:has(#need-build:checked) #communication,
+html:has(#need-build:checked) #networking,
+html:has(#need-build:checked) #data,
+html:has(#need-build:checked) #identity,
+html:has(#need-build:checked) #money,
+html:has(#need-build:checked) #search,
+html:has(#need-build:checked) #ai,
+html:has(#need-build:checked) #governance,
+html:has(#need-ai:checked) #hardware,
+html:has(#need-ai:checked) #os,
+html:has(#need-ai:checked) #communication,
+html:has(#need-ai:checked) #networking,
+html:has(#need-ai:checked) #data,
+html:has(#need-ai:checked) #identity,
+html:has(#need-ai:checked) #money,
+html:has(#need-ai:checked) #search,
+html:has(#need-ai:checked) #development,
+html:has(#need-ai:checked) #governance,
+html:has(#need-govern:checked) #hardware,
+html:has(#need-govern:checked) #os,
+html:has(#need-govern:checked) #communication,
+html:has(#need-govern:checked) #networking,
+html:has(#need-govern:checked) #data,
+html:has(#need-govern:checked) #identity,
+html:has(#need-govern:checked) #money,
+html:has(#need-govern:checked) #search,
+html:has(#need-govern:checked) #development,
+html:has(#need-govern:checked) #ai {
+  display: none;
+}
+
+/* Layout & tap-target tuning for narrow viewports. */
+@media (max-width: 600px) {
+  body {
+    padding: 1.5rem 0.85rem 3rem;
+  }
+  hr {
+    margin: 2rem 0;
+  }
+  .hero {
+    min-height: min(85vh, 780px);
+    padding: 1rem 0.85rem 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+  .hero-top {
+    min-height: 0;
+    align-items: start;
+  }
+  .hero-brand {
+    font-size: clamp(1.35rem, 7vw, 2.25rem);
+    letter-spacing: 0.12em;
+  }
+  .hero-id {
+    width: min(120px, 26vw);
+    height: min(120px, 26vw);
+    justify-self: end;
+  }
+  .hero-center {
+    padding: 1.25rem 0;
+  }
+  .hero-bottom {
+    align-items: flex-end;
+  }
+  .quiz-launcher {
+    padding-top: 0.5rem;
+  }
+  .quiz-launch-button {
+    display: block;
+    text-align: center;
+    padding: 0.85rem 1rem;
+    margin: 0.5rem 0 1rem;
+  }
+  .quiz-options label {
+    padding: 0.7rem 0.85rem;
+    font-size: 0.95rem;
+  }
+  .quiz-modal {
+    padding: 0;
+  }
+  .quiz-overlay {
+    display: none;
+  }
+  .quiz-modal-content {
+    border: none;
+    margin: 0;
+    min-height: 100vh;
+    min-height: 100dvh;
+    padding: 0.75rem 1rem 2rem;
+    max-width: none;
+  }
+  .quiz-modal-bar {
+    margin: 0 -0.25rem 0.75rem;
+    position: sticky;
+    top: 0;
+    background: var(--bg);
+    padding: 0.4rem 0;
+    z-index: 2;
+  }
+  .quiz-back,
+  .quiz-close {
+    padding: 0.6rem 0.75rem;
+  }
+  .quiz-close {
+    font-size: 1.7rem;
+  }
+  .pr-button {
+    padding: 0.75rem 1.2rem;
+  }
+  nav ul li {
+    margin-bottom: 0.6rem;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  .ans-more {
+    line-height: 1.7;
+  }
+  dt {
+    margin-top: 1.75rem;
+  }
+}
+</style>
+</head>
+<body>
+
+<header class="hero" role="banner">
+  <div class="hero-top">
+    <p class="hero-brand">CROPS CIRCLE</p>
+    <img src="images/crops_id.png" alt="CROPS Circle mark" class="hero-id" width="60" height="60">
+  </div>
+  <div class="hero-center">
+    <h1 class="site-title">CROPS<br><span class="word-circle">CIRCLE</span></h1>
+  </div>
+  <div class="hero-bottom">
+    <p class="hero-tagline">It&rsquo;s Time to Get Out</p>
+    <a href="#index" class="hero-index-link">View Index</a>
+  </div>
+</header>
+
+<main>
+
+<section id="manifesto">
+<div class="poem">
+  <p><span class="loud">CROPS Circle</span> indexes tools for coordination and creation free of predation, extraction, censorship or surveillance by power of all stripes (nation-states, multinational corporations, oligarchs). We believe in technology as a tool for the autonomy and thriving of the many rather than the enrichment of the few.</p>
+
+  <p class="gap">CROPS technologies are</p>
+  <p class="i1 loud"><span class="crops-letter">C</span>ensorship&#8209;</p>
+  <p class="i1 loud"><span class="crops-letter">R</span>esistant <span class="def">cannot be removed or blocked by a platform or government</span></p>
+  <p class="i1 loud"><span class="crops-letter">O</span>pen Source <span class="def">source code is publicly available to read, audit, and modify</span></p>
+  <p class="i1 loud"><span class="crops-letter">P</span>rivate <span class="def">does not collect or share your personal data</span></p>
+  <p class="i1 loud"><span class="crops-letter">S</span>ecure <span class="def">designed to resist unauthorized access and attack</span></p>
+
+  <p class="gap i2"><a href="#index">Find what you need &gt;&gt;&gt;</a></p>
+</div>
+</section>
+
+<hr>
+
+<div class="poem" role="banner" aria-label="CROPS Circle — opening statement">
+  <p><span class="faded">Silicon Valley</span> wants to</p>
+  <p class="i1 loud">drive us fucking insane.</p>
+
+  <p class="gap faded">To reclaim our minds,</p>
+  <p class="i1 med">we have to reclaim our technology.</p>
+
+  <p class="gap">When we run our own <span class="mono">servers,</span></p>
+  <p>build and repair our own <span class="mono">hardware,</span></p>
+  <p>own our own <span class="mono">data,</span></p>
+  <p class="i1">and construct our own <span class="mono">algorithms,</span></p>
+
+  <p class="gap i2">the world ceases to be</p>
+  <p class="i3 faded">a focus group formula</p>
+  <p class="i2">and becomes</p>
+  <p class="i2"><span class="alien-word">alien</span></p>
+  <p class="i3 faded">again.</p>
+</div>
+
+<hr>
+
+<section id="index">
+<div class="quiz">
+
+  <input type="radio" name="quiz-state" id="quiz-closed" checked>
+  <input type="radio" name="quiz-state" id="quiz-open">
+  <input type="radio" name="quiz-state" id="need-communicate">
+  <input type="radio" name="quiz-state" id="need-anonymous">
+  <input type="radio" name="quiz-state" id="need-device">
+  <input type="radio" name="quiz-state" id="need-data">
+  <input type="radio" name="quiz-state" id="need-money">
+  <input type="radio" name="quiz-state" id="need-browse">
+  <input type="radio" name="quiz-state" id="need-infra">
+  <input type="radio" name="quiz-state" id="need-build">
+  <input type="radio" name="quiz-state" id="need-ai">
+  <input type="radio" name="quiz-state" id="need-govern">
+
+  <div class="quiz-launcher">
+    <p class="quiz-greeting">Hello, anon.</p>
+    <p class="quiz-question">What are your technology needs?</p>
+    <label for="quiz-open" class="quiz-launch-button" role="button" tabindex="0">Select</label>
+    <p class="quiz-filter-status">Filter active.</p>
+    <label for="quiz-closed" class="quiz-clear-button" role="button" tabindex="0">Clear selection</label>
+    <p class="quiz-browse-all"><a href="#complete-index">Browse the complete index &darr;</a></p>
+  </div>
+
+  <div class="quiz-modal" role="dialog" aria-modal="true" aria-label="Technology needs">
+    <label for="quiz-closed" class="quiz-overlay" aria-label="Close"></label>
+    <div class="quiz-modal-content">
+      <div class="quiz-modal-bar">
+        <label for="quiz-open" class="quiz-back" role="button" tabindex="0">&larr; Back</label>
+        <label for="quiz-closed" class="quiz-close" role="button" tabindex="0" aria-label="Close">&times;</label>
+      </div>
+
+      <div class="quiz-shell">
+        <p class="quiz-greeting">Hello, anon.</p>
+        <p class="quiz-question">What are your technology needs?</p>
+        <div class="quiz-options">
+          <label for="need-communicate">Communicate privately</label>
+          <label for="need-anonymous">Stay anonymous online</label>
+          <label for="need-device">Secure my device</label>
+          <label for="need-data">Own my data</label>
+          <label for="need-money">Transact without surveillance</label>
+          <label for="need-browse">Browse without being tracked</label>
+          <label for="need-infra">Run my own infrastructure</label>
+          <label for="need-build">Build and collaborate freely</label>
+          <label for="need-ai">Run AI without the cloud</label>
+          <label for="need-govern">Coordinate with my community</label>
+        </div>
+      </div>
+
+  <div class="quiz-answer ans-communicate">
+    <p class="ans-label">Communicate privately</p>
+    <dl>
+      <dt>SIGNAL</dt>
+      <dd class="desc">End-to-end encrypted messenger with sealed sender and disappearing messages; no metadata sold. The most widely audited secure messenger.</dd>
+      <dd class="url"><a href="https://signal.org">https://signal.org</a></dd>
+      <dt>SIMPLEX CHAT</dt>
+      <dd class="desc">No user IDs — not even random ones; E2EE over a decentralized relay network. No central party can correlate users to conversations.</dd>
+      <dd class="url"><a href="https://simplex.chat">https://simplex.chat</a></dd>
+      <dt>BRIAR</dt>
+      <dd class="desc">P2P encrypted messenger syncing over Tor, Wi-Fi, or Bluetooth — works completely without internet. Built for hostile network environments.</dd>
+      <dd class="url"><a href="https://briarproject.org">https://briarproject.org</a></dd>
+      <dt>MATRIX / ELEMENT</dt>
+      <dd class="desc">Federated, E2EE messaging protocol; self-hostable, bridges to other networks. No single company controls the network.</dd>
+      <dd class="url"><a href="https://matrix.org">https://matrix.org</a></dd>
+    </dl>
+    <p class="ans-more"><a href="#communication">See all Communication tools &darr;</a></p>
+  </div>
+
+  <div class="quiz-answer ans-anonymous">
+    <p class="ans-label">Stay anonymous online</p>
+    <dl>
+      <dt>TOR</dt>
+      <dd class="desc">Onion-routing anonymity network; hides IP and browsing patterns through layered encryption across volunteer relays. The gold standard for network anonymity.</dd>
+      <dd class="url"><a href="https://www.torproject.org">https://www.torproject.org</a></dd>
+      <dt>TAILS</dt>
+      <dd class="desc">Amnesic live OS; leaves no trace on host hardware, routes all traffic through Tor. The standard for operational security in hostile environments.</dd>
+      <dd class="url"><a href="https://tails.boum.org">https://tails.boum.org</a></dd>
+      <dt>WHONIX</dt>
+      <dd class="desc">Two-VM Tor-gateway architecture isolating the user workstation from the network entirely. DNS and traffic leaks are structurally impossible.</dd>
+      <dd class="url"><a href="https://www.whonix.org">https://www.whonix.org</a></dd>
+      <dt>MULLVAD VPN</dt>
+      <dd class="desc">No-logs, no-required-email VPN; accepts cash and Monero payment, independently audited. No account needed — just a number.</dd>
+      <dd class="url"><a href="https://mullvad.net">https://mullvad.net</a></dd>
+    </dl>
+    <p class="ans-more"><a href="#networking">See all Networking &amp; Anonymity tools &darr;</a> &nbsp;·&nbsp; <a href="#os">See all Operating Systems &darr;</a></p>
+  </div>
+
+  <div class="quiz-answer ans-device">
+    <p class="ans-label">Secure my device</p>
+    <dl>
+      <dt>GRAPHENEOS</dt>
+      <dd class="desc">Hardened Android for Pixel hardware; removes Google services, hardens kernel and userspace, verified boot enforced. The sovereign mobile OS.</dd>
+      <dd class="url"><a href="https://grapheneos.org">https://grapheneos.org</a></dd>
+      <dt>QUBES OS</dt>
+      <dd class="desc">Security-by-compartmentalization; each application runs in an isolated Xen VM, disposable VMs built in. Endorsed by Snowden.</dd>
+      <dd class="url"><a href="https://www.qubes-os.org">https://www.qubes-os.org</a></dd>
+      <dt>TAILS</dt>
+      <dd class="desc">Amnesic live OS; leaves no trace on host hardware, routes all traffic through Tor. The standard for operational security in hostile environments.</dd>
+      <dd class="url"><a href="https://tails.boum.org">https://tails.boum.org</a></dd>
+      <dt>VERACRYPT</dt>
+      <dd class="desc">On-the-fly disk encryption with plausible deniability via hidden volumes; successor to TrueCrypt, independently audited.</dd>
+      <dd class="url"><a href="https://veracrypt.fr">https://veracrypt.fr</a></dd>
+    </dl>
+    <p class="ans-more"><a href="#os">See all Operating Systems &darr;</a> &nbsp;·&nbsp; <a href="#hardware">See all Hardware &darr;</a></p>
+  </div>
+
+  <div class="quiz-answer ans-data">
+    <p class="ans-label">Own my data</p>
+    <dl>
+      <dt>SYNCTHING</dt>
+      <dd class="desc">Continuous file synchronization between devices; no cloud, no central server, encrypted in transit. Replaces Dropbox without surrendering your data.</dd>
+      <dd class="url"><a href="https://syncthing.net">https://syncthing.net</a></dd>
+      <dt>NEXTCLOUD</dt>
+      <dd class="desc">Self-hosted file storage, calendar, and collaboration suite; full data sovereignty on your own server or trusted provider.</dd>
+      <dd class="url"><a href="https://nextcloud.com">https://nextcloud.com</a></dd>
+      <dt>VERACRYPT</dt>
+      <dd class="desc">On-the-fly disk encryption with plausible deniability via hidden volumes; successor to TrueCrypt, independently audited.</dd>
+      <dd class="url"><a href="https://veracrypt.fr">https://veracrypt.fr</a></dd>
+      <dt>RESTIC</dt>
+      <dd class="desc">Fast, secure, deduplicated backups encrypted at rest; supports local, SFTP, S3, and many other backends.</dd>
+      <dd class="url"><a href="https://restic.net">https://restic.net</a></dd>
+    </dl>
+    <p class="ans-more"><a href="#data">See all Data &amp; Storage tools &darr;</a></p>
+  </div>
+
+  <div class="quiz-answer ans-money">
+    <p class="ans-label">Transact without surveillance</p>
+    <dl>
+      <dt>MONERO</dt>
+      <dd class="desc">Privacy-by-default cryptocurrency; ring signatures, stealth addresses, and RingCT hide sender, receiver, and amount on every transaction.</dd>
+      <dd class="url"><a href="https://www.getmonero.org">https://www.getmonero.org</a></dd>
+      <dt>BITCOIN</dt>
+      <dd class="desc">Permissionless, censorship-resistant store of value; non-custodial wallets require no third party, no account, no permission.</dd>
+      <dd class="url"><a href="https://bitcoin.org">https://bitcoin.org</a></dd>
+      <dt>BISQ</dt>
+      <dd class="desc">Decentralized, non-custodial Bitcoin exchange; no KYC, no central operator, P2P trades with built-in dispute resolution.</dd>
+      <dd class="url"><a href="https://bisq.network">https://bisq.network</a></dd>
+      <dt>BTCPAY SERVER</dt>
+      <dd class="desc">Self-hosted Bitcoin and Lightning payment processor; no third party, no percentage fees, complete sovereignty over your payment infrastructure.</dd>
+      <dd class="url"><a href="https://btcpayserver.org">https://btcpayserver.org</a></dd>
+    </dl>
+    <p class="ans-more"><a href="#money">See all Money &amp; Value Exchange tools &darr;</a></p>
+  </div>
+
+  <div class="quiz-answer ans-browse">
+    <p class="ans-label">Browse without being tracked</p>
+    <dl>
+      <dt>TOR BROWSER</dt>
+      <dd class="desc">Firefox-based browser routed through the Tor network; fingerprinting resistance, NoScript by default. The baseline for anonymous browsing.</dd>
+      <dd class="url"><a href="https://www.torproject.org/download/">https://www.torproject.org/download/</a></dd>
+      <dt>LIBREWOLF</dt>
+      <dd class="desc">Firefox fork with privacy defaults already configured; no telemetry, uBlock Origin included, hardened user.js baked in.</dd>
+      <dd class="url"><a href="https://librewolf.net">https://librewolf.net</a></dd>
+      <dt>SEARXNG</dt>
+      <dd class="desc">Self-hostable, open-source metasearch engine aggregating results from multiple sources without tracking queries.</dd>
+      <dd class="url"><a href="https://docs.searxng.org">https://docs.searxng.org</a></dd>
+      <dt>UBLOCK ORIGIN</dt>
+      <dd class="desc">Open-source, highly efficient content blocker; uses filter lists, low memory footprint, widely audited. The essential browser extension.</dd>
+      <dd class="url"><a href="https://ublockorigin.com">https://ublockorigin.com</a></dd>
+    </dl>
+    <p class="ans-more"><a href="#search">See all Search &amp; Browsing tools &darr;</a></p>
+  </div>
+
+  <div class="quiz-answer ans-infra">
+    <p class="ans-label">Run my own infrastructure</p>
+    <dl>
+      <dt>FRAMEWORK LAPTOP</dt>
+      <dd class="desc">Fully user-repairable laptop with open EC firmware; modular and independently ownable. Designed to outlast vendor support cycles.</dd>
+      <dd class="url"><a href="https://frame.work">https://frame.work</a></dd>
+      <dt>OPENWRT</dt>
+      <dd class="desc">Open-source Linux distribution for routers; replaces ISP-controlled firmware with an auditable, self-managed stack.</dd>
+      <dd class="url"><a href="https://openwrt.org">https://openwrt.org</a></dd>
+      <dt>NEXTCLOUD</dt>
+      <dd class="desc">Self-hosted file storage, calendar, and collaboration suite; full data sovereignty on your own server or trusted provider.</dd>
+      <dd class="url"><a href="https://nextcloud.com">https://nextcloud.com</a></dd>
+      <dt>WIREGUARD</dt>
+      <dd class="desc">Minimal, audited VPN now in the Linux kernel; clean modern cryptography, vastly smaller codebase than OpenVPN. Self-hostable.</dd>
+      <dd class="url"><a href="https://www.wireguard.com">https://www.wireguard.com</a></dd>
+    </dl>
+    <p class="ans-more"><a href="#hardware">See all Hardware &amp; Infrastructure &darr;</a> &nbsp;·&nbsp; <a href="#networking">See all Networking tools &darr;</a></p>
+  </div>
+
+  <div class="quiz-answer ans-build">
+    <p class="ans-label">Build and collaborate freely</p>
+    <dl>
+      <dt>GIT</dt>
+      <dd class="desc">Distributed version control; no central server required, full history in every clone. The foundation of sovereign code collaboration.</dd>
+      <dd class="url"><a href="https://git-scm.com">https://git-scm.com</a></dd>
+      <dt>FORGEJO</dt>
+      <dd class="desc">Community fork of Gitea; self-hostable Git forge with issues, PRs, and CI. No Microsoft, no GitHub dependency required.</dd>
+      <dd class="url"><a href="https://forgejo.org">https://forgejo.org</a></dd>
+      <dt>RADICLE</dt>
+      <dd class="desc">Peer-to-peer code collaboration over a sovereign stack; Git repositories published over a decentralized protocol with cryptographic identity.</dd>
+      <dd class="url"><a href="https://radicle.xyz">https://radicle.xyz</a></dd>
+      <dt>CODEBERG</dt>
+      <dd class="desc">Non-profit Forgejo instance; public hosting for libre software projects, operated by a German non-profit, no surveillance capitalism.</dd>
+      <dd class="url"><a href="https://codeberg.org">https://codeberg.org</a></dd>
+    </dl>
+    <p class="ans-more"><a href="#development">See all Development &amp; Collaboration tools &darr;</a></p>
+  </div>
+
+  <div class="quiz-answer ans-ai">
+    <p class="ans-label">Run AI without the cloud</p>
+    <dl>
+      <dt>OLLAMA</dt>
+      <dd class="desc">Run open-weight LLMs locally; one-command setup for Llama, Mistral, Gemma, and others — no cloud, no data sent to third parties.</dd>
+      <dd class="url"><a href="https://ollama.com">https://ollama.com</a></dd>
+      <dt>LLAMA.CPP</dt>
+      <dd class="desc">C/C++ inference engine for LLaMA-family models; runs on CPU with no GPU or cloud dependency, minimal footprint.</dd>
+      <dd class="url"><a href="https://github.com/ggml-org/llama.cpp">https://github.com/ggml-org/llama.cpp</a></dd>
+      <dt>JAN</dt>
+      <dd class="desc">Open-source, fully offline AI assistant desktop application; local model runner with chat interface, no telemetry.</dd>
+      <dd class="url"><a href="https://jan.ai">https://jan.ai</a></dd>
+      <dt>OPEN WEBUI</dt>
+      <dd class="desc">Self-hosted web interface for Ollama and OpenAI-compatible APIs; all requests stay on your infrastructure.</dd>
+      <dd class="url"><a href="https://openwebui.com">https://openwebui.com</a></dd>
+    </dl>
+    <p class="ans-more"><a href="#ai">See all AI &amp; Computation tools &darr;</a></p>
+  </div>
+
+  <div class="quiz-answer ans-govern">
+    <p class="ans-label">Coordinate with my community</p>
+    <dl>
+      <dt>NOSTR</dt>
+      <dd class="desc">Decentralized, censorship-resistant social protocol; no central server, identity is a keypair, relay network is permissionless.</dd>
+      <dd class="url"><a href="https://nostr.com">https://nostr.com</a></dd>
+      <dt>MASTODON</dt>
+      <dd class="desc">Federated microblogging on the ActivityPub protocol; self-hostable, no algorithmic feed, no corporate owner of the network.</dd>
+      <dd class="url"><a href="https://joinmastodon.org">https://joinmastodon.org</a></dd>
+      <dt>MATRIX SPACES</dt>
+      <dd class="desc">Federated community spaces over the Matrix protocol; self-governed group infrastructure without Discord or Slack dependency.</dd>
+      <dd class="url"><a href="https://matrix.org">https://matrix.org</a></dd>
+      <dt>LOOMIO</dt>
+      <dd class="desc">Open-source, self-hostable cooperative decision-making tool; supports consent and consensus processes, used by cooperatives worldwide.</dd>
+      <dd class="url"><a href="https://www.loomio.com">https://www.loomio.com</a></dd>
+    </dl>
+    <p class="ans-more"><a href="#governance">See all Governance &amp; Coordination tools &darr;</a></p>
+  </div>
+
+    </div>
+  </div>
+
+</div>
+</section>
+
+<hr>
+
+<!-- ─────────────────────────────────────────────── -->
+
+<section id="complete-index">
+<h2>Complete Index</h2>
+<nav aria-label="Complete section index">
+<ul>
+  <li><a href="#hardware">Hardware &amp; Infrastructure</a></li>
+  <li><a href="#os">Operating Systems &amp; Firmware</a></li>
+  <li><a href="#communication">Communication</a></li>
+  <li><a href="#networking">Networking &amp; Anonymity</a></li>
+  <li><a href="#data">Data &amp; Storage</a></li>
+  <li><a href="#identity">Identity &amp; Authentication</a></li>
+  <li><a href="#money">Money &amp; Value Exchange</a></li>
+  <li><a href="#search">Search &amp; Browsing</a></li>
+  <li><a href="#development">Development &amp; Collaboration</a></li>
+  <li><a href="#ai">AI &amp; Computation</a></li>
+  <li><a href="#governance">Governance &amp; Coordination</a></li>
+</ul>
+</nav>
+</section>
+
+<hr>
+
+<section id="hardware">
+<h2>Hardware &amp; Infrastructure</h2>
+<dl>
+
+  <dt>SYSTEM76</dt>
+  <dd class="desc">US-based maker of open-firmware Linux laptops and desktops; ships with coreboot. Battle-tested in the libre hardware community.</dd>
+  <dd class="url"><a href="https://system76.com">https://system76.com</a></dd>
+
+  <dt>PURISM LIBREM</dt>
+  <dd class="desc">Hardware with neutralized Intel ME, coreboot, and PureOS; designed for privacy by default. Ships with a hardware kill switch for camera, mic, and WiFi.</dd>
+  <dd class="url"><a href="https://puri.sm">https://puri.sm</a></dd>
+
+  <dt>PINE64</dt>
+  <dd class="desc">Community-driven ARM hardware — PinePhone, PineBook Pro — open schematics, no proprietary blobs required. Affordable sovereign hardware platform.</dd>
+  <dd class="url"><a href="https://pine64.org">https://pine64.org</a></dd>
+
+  <dt>FRAMEWORK LAPTOP</dt>
+  <dd class="desc">Fully user-repairable laptop with open EC firmware; modular and independently ownable. Designed to outlast vendor support cycles.</dd>
+  <dd class="url"><a href="https://frame.work">https://frame.work</a></dd>
+
+  <dt>NOVACUSTOM</dt>
+  <dd class="desc">Dutch laptop vendor shipping with coreboot/Dasharo open firmware; no Intel ME, configurable security options.</dd>
+  <dd class="url"><a href="https://novacustom.com">https://novacustom.com</a></dd>
+
+  <dt>COREBOOT</dt>
+  <dd class="desc">Open-source firmware replacing proprietary BIOS/UEFI; fully auditable boot chain, no closed blobs on supported hardware.</dd>
+  <dd class="url"><a href="https://coreboot.org">https://coreboot.org</a></dd>
+
+  <dt>LIBREBOOT</dt>
+  <dd class="desc">Coreboot distribution with all binary blobs removed; FSF-endorsed, fully free firmware for supported boards.</dd>
+  <dd class="url"><a href="https://libreboot.org">https://libreboot.org</a></dd>
+
+  <dt>HEADS</dt>
+  <dd class="desc">Security-hardened coreboot+Linux payload providing measured, verified boot on Librem and Thinkpad hardware.</dd>
+  <dd class="url"><a href="https://osresearch.net">https://osresearch.net</a></dd>
+
+  <dt>OPENWRT</dt>
+  <dd class="desc">Open-source Linux distribution for routers; replaces ISP-controlled firmware with an auditable, self-managed stack. Widely deployed.</dd>
+  <dd class="url"><a href="https://openwrt.org">https://openwrt.org</a></dd>
+
+  <dt>DD-WRT</dt>
+  <dd class="desc">Open router firmware alternative; extends hardware life and removes manufacturer surveillance hooks from consumer routers.</dd>
+  <dd class="url"><a href="https://dd-wrt.com">https://dd-wrt.com</a></dd>
+
+  <dt>OLIMEX</dt>
+  <dd class="desc">Bulgarian maker of open-hardware development boards and laptops; all schematics published, no proprietary components.</dd>
+  <dd class="url"><a href="https://www.olimex.com">https://www.olimex.com</a></dd>
+
+  <dt>RASPBERRY PI (w/ libre OS)</dt>
+  <dd class="desc">Low-cost ARM SBC; when paired with a libre OS, removes dependency on proprietary x86 stacks for servers and embedded systems.</dd>
+  <dd class="url"><a href="https://www.raspberrypi.com">https://www.raspberrypi.com</a></dd>
+
+  <dt>EOMA68</dt>
+  <dd class="desc">Open hardware computing card standard; swappable CPU modules with fully open schematics, designed for longevity and repairability.</dd>
+  <dd class="url"><a href="https://eoma68.org">https://eoma68.org</a></dd>
+
+</dl>
+</section>
+
+<hr>
+
+<section id="os">
+<h2>Operating Systems &amp; Firmware</h2>
+<dl>
+
+  <dt>TAILS</dt>
+  <dd class="desc">Amnesic live OS; leaves no trace on host hardware, routes all traffic through Tor. The standard for operational security in hostile environments.</dd>
+  <dd class="url"><a href="https://tails.boum.org">https://tails.boum.org</a></dd>
+
+  <dt>WHONIX</dt>
+  <dd class="desc">Two-VM Tor-gateway architecture isolating the user workstation from the network entirely. DNS and traffic leaks are structurally impossible.</dd>
+  <dd class="url"><a href="https://www.whonix.org">https://www.whonix.org</a></dd>
+
+  <dt>QUBES OS</dt>
+  <dd class="desc">Security-by-compartmentalization; each application runs in an isolated Xen VM, disposable VMs built in. Endorsed by Snowden.</dd>
+  <dd class="url"><a href="https://www.qubes-os.org">https://www.qubes-os.org</a></dd>
+
+  <dt>GRAPHENEOS</dt>
+  <dd class="desc">Hardened Android for Pixel hardware; removes Google services, hardens kernel and userspace, verified boot enforced. The sovereign mobile OS.</dd>
+  <dd class="url"><a href="https://grapheneos.org">https://grapheneos.org</a></dd>
+
+  <dt>CALYXOS</dt>
+  <dd class="desc">De-Googled Android with microG compatibility; balances strong privacy with app compatibility on Pixel devices.</dd>
+  <dd class="url"><a href="https://calyxos.org">https://calyxos.org</a></dd>
+
+  <dt>POSTMARKET OS</dt>
+  <dd class="desc">Alpine-based Linux for smartphones; extends hardware life beyond vendor EOL, targets mainline kernel support.</dd>
+  <dd class="url"><a href="https://postmarketos.org">https://postmarketos.org</a></dd>
+
+  <dt>LINEAGEOS</dt>
+  <dd class="desc">Community Android fork; removes OEM bloatware, extends device support years beyond manufacturer abandonment.</dd>
+  <dd class="url"><a href="https://lineageos.org">https://lineageos.org</a></dd>
+
+  <dt>DEBIAN GNU/LINUX</dt>
+  <dd class="desc">The universal OS; no corporate owner, community governed, decades of stable libre packages. The foundation for many sovereign systems.</dd>
+  <dd class="url"><a href="https://www.debian.org">https://www.debian.org</a></dd>
+
+  <dt>ALPINE LINUX</dt>
+  <dd class="desc">Musl-libc, minimal footprint, security-focused distribution; preferred base for containers and embedded systems.</dd>
+  <dd class="url"><a href="https://alpinelinux.org">https://alpinelinux.org</a></dd>
+
+  <dt>NIXOS</dt>
+  <dd class="desc">Purely functional, reproducible OS; every configuration is declarative and auditable, rollback is trivial.</dd>
+  <dd class="url"><a href="https://nixos.org">https://nixos.org</a></dd>
+
+  <dt>GUIX SYSTEM</dt>
+  <dd class="desc">GNU's fully free distribution with functional package management; cryptographically reproducible builds, FSF-endorsed.</dd>
+  <dd class="url"><a href="https://guix.gnu.org">https://guix.gnu.org</a></dd>
+
+  <dt>PARABOLA GNU/LINUX</dt>
+  <dd class="desc">FSF-endorsed Arch derivative with all proprietary packages and firmware blobs removed; fully free system.</dd>
+  <dd class="url"><a href="https://www.parabola.nu">https://www.parabola.nu</a></dd>
+
+  <dt>PUREOS</dt>
+  <dd class="desc">Debian-based, FSF-endorsed OS shipping on Librem hardware; no proprietary components anywhere in the stack.</dd>
+  <dd class="url"><a href="https://pureos.net">https://pureos.net</a></dd>
+
+  <dt>OPENBSD</dt>
+  <dd class="desc">Proactive security OS; relentless code auditing by default, minimal attack surface, clean cryptography defaults.</dd>
+  <dd class="url"><a href="https://www.openbsd.org">https://www.openbsd.org</a></dd>
+
+  <dt>FREEBSD</dt>
+  <dd class="desc">Open-source Unix; ZFS native, jails for isolation, permissively licensed and fully auditable. Production-proven for self-hosted infrastructure.</dd>
+  <dd class="url"><a href="https://www.freebsd.org">https://www.freebsd.org</a></dd>
+
+</dl>
+</section>
+
+<hr>
+
+<section id="communication">
+<h2>Communication</h2>
+<dl>
+
+  <dt>SIGNAL</dt>
+  <dd class="desc">End-to-end encrypted messenger with sealed sender and disappearing messages; no metadata sold. The most widely audited secure messenger.</dd>
+  <dd class="url"><a href="https://signal.org">https://signal.org</a></dd>
+
+  <dt>SIMPLEX CHAT</dt>
+  <dd class="desc">No user IDs — not even random ones; E2EE over a decentralized relay network. No central party can correlate users to conversations.</dd>
+  <dd class="url"><a href="https://simplex.chat">https://simplex.chat</a></dd>
+
+  <dt>BRIAR</dt>
+  <dd class="desc">P2P encrypted messenger syncing over Tor, Wi-Fi, or Bluetooth — works completely without internet. Built for hostile network environments.</dd>
+  <dd class="url"><a href="https://briarproject.org">https://briarproject.org</a></dd>
+
+  <dt>SESSION</dt>
+  <dd class="desc">Decentralized E2EE messenger requiring no phone number; messages routed over the Session Network (Lokinet-derived).</dd>
+  <dd class="url"><a href="https://getsession.org">https://getsession.org</a></dd>
+
+  <dt>CWTCH</dt>
+  <dd class="desc">P2P, metadata-resistant group chat built on Tor v3 onion services; no server sees who is talking to whom.</dd>
+  <dd class="url"><a href="https://cwtch.im">https://cwtch.im</a></dd>
+
+  <dt>MATRIX / ELEMENT</dt>
+  <dd class="desc">Federated, E2EE messaging protocol; self-hostable, bridges to other networks. No single company controls the network.</dd>
+  <dd class="url"><a href="https://matrix.org">https://matrix.org</a></dd>
+
+  <dt>XMPP + OMEMO</dt>
+  <dd class="desc">Open federated messaging standard with 20+ years of deployment; OMEMO extension provides double-ratchet E2EE matching Signal's protocol.</dd>
+  <dd class="url"><a href="https://xmpp.org">https://xmpp.org</a></dd>
+
+  <dt>DELTA CHAT</dt>
+  <dd class="desc">E2EE chat over existing email infrastructure using Autocrypt; no new account needed, works with any email provider.</dd>
+  <dd class="url"><a href="https://delta.chat">https://delta.chat</a></dd>
+
+  <dt>JAMI</dt>
+  <dd class="desc">Fully P2P voice, video, and messaging using a DHT; no central server required, no account registration.</dd>
+  <dd class="url"><a href="https://jami.net">https://jami.net</a></dd>
+
+  <dt>TOX</dt>
+  <dd class="desc">P2P E2EE voice, video, and messaging with no servers; your identity is a cryptographic key, no registration needed.</dd>
+  <dd class="url"><a href="https://tox.chat">https://tox.chat</a></dd>
+
+  <dt>RETROSHARE</dt>
+  <dd class="desc">Encrypted friend-to-friend network for messaging, file sharing, and forums; trust anchored to PGP keys.</dd>
+  <dd class="url"><a href="https://retroshare.cc">https://retroshare.cc</a></dd>
+
+  <dt>JITSI MEET</dt>
+  <dd class="desc">Open-source video conferencing; self-hostable with no account required for participants. Widely deployed by privacy-conscious organizations.</dd>
+  <dd class="url"><a href="https://jitsi.org">https://jitsi.org</a></dd>
+
+  <dt>MUMBLE</dt>
+  <dd class="desc">Low-latency, open-source encrypted voice chat; self-hostable, no cloud dependency, minimal data collection.</dd>
+  <dd class="url"><a href="https://www.mumble.info">https://www.mumble.info</a></dd>
+
+  <dt>NOSTR</dt>
+  <dd class="desc">Cryptographically signed, censorship-resistant protocol for short-form messaging; identity is a keypair, relay network is decentralized.</dd>
+  <dd class="url"><a href="https://nostr.com">https://nostr.com</a></dd>
+
+</dl>
+</section>
+
+<hr>
+
+<section id="networking">
+<h2>Networking &amp; Anonymity</h2>
+<dl>
+
+  <dt>TOR</dt>
+  <dd class="desc">Onion-routing anonymity network; hides IP and browsing patterns through layered encryption across volunteer relays. The gold standard for network anonymity.</dd>
+  <dd class="url"><a href="https://www.torproject.org">https://www.torproject.org</a></dd>
+
+  <dt>I2P</dt>
+  <dd class="desc">Garlic-routing overlay network optimized for internal hidden services and P2P; distinct threat model from Tor, strong for darknet applications.</dd>
+  <dd class="url"><a href="https://geti2p.net">https://geti2p.net</a></dd>
+
+  <dt>LOKINET</dt>
+  <dd class="desc">Onion-routing network using a blockchain-anchored DHT for relay discovery; supports exit nodes and hidden services.</dd>
+  <dd class="url"><a href="https://lokinet.org">https://lokinet.org</a></dd>
+
+  <dt>YGGDRASIL</dt>
+  <dd class="desc">End-to-end encrypted mesh network with cryptographic addressing; self-organizing topology, no central routing authority.</dd>
+  <dd class="url"><a href="https://yggdrasil-network.github.io">https://yggdrasil-network.github.io</a></dd>
+
+  <dt>CJDNS</dt>
+  <dd class="desc">Encrypted IPv6 mesh networking; every node is its own router, addresses are derived from public keys, no central authority.</dd>
+  <dd class="url"><a href="https://github.com/cjdelisle/cjdns">https://github.com/cjdelisle/cjdns</a></dd>
+
+  <dt>WIREGUARD</dt>
+  <dd class="desc">Minimal, audited VPN now in the Linux kernel; clean modern cryptography, vastly smaller codebase than OpenVPN. Self-hostable.</dd>
+  <dd class="url"><a href="https://www.wireguard.com">https://www.wireguard.com</a></dd>
+
+  <dt>OPENVPN</dt>
+  <dd class="desc">Mature, audited open-source VPN; widely supported for self-hosted network tunneling across platforms.</dd>
+  <dd class="url"><a href="https://openvpn.net">https://openvpn.net</a></dd>
+
+  <dt>MULLVAD VPN</dt>
+  <dd class="desc">No-logs, no-required-email VPN; accepts cash and Monero payment, independently audited. No account needed — just a number.</dd>
+  <dd class="url"><a href="https://mullvad.net">https://mullvad.net</a></dd>
+
+  <dt>PIHOLE</dt>
+  <dd class="desc">Network-level DNS sinkhole blocking ads and trackers for every device on a LAN; self-hosted, open source.</dd>
+  <dd class="url"><a href="https://pi-hole.net">https://pi-hole.net</a></dd>
+
+  <dt>UNBOUND</dt>
+  <dd class="desc">Validating, recursive, caching DNS resolver; DNSSEC support, run locally to eliminate ISP DNS snooping entirely.</dd>
+  <dd class="url"><a href="https://nlnetlabs.nl/projects/unbound">https://nlnetlabs.nl/projects/unbound</a></dd>
+
+  <dt>DNSCRYPT-PROXY</dt>
+  <dd class="desc">Encrypts DNS queries using DNSCrypt or DNS-over-HTTPS; prevents interception and manipulation by ISPs and on-path observers.</dd>
+  <dd class="url"><a href="https://github.com/DNSCrypt/dnscrypt-proxy">https://github.com/DNSCrypt/dnscrypt-proxy</a></dd>
+
+  <dt>HYPHANET (formerly Freenet)</dt>
+  <dd class="desc">Distributed, censorship-resistant datastore and communication platform; content persists across the network without central hosting.</dd>
+  <dd class="url"><a href="https://www.hyphanet.org">https://www.hyphanet.org</a></dd>
+
+  <dt>ZEROTIER</dt>
+  <dd class="desc">Software-defined networking creating encrypted peer-to-peer virtual LANs across the internet; self-hostable controller.</dd>
+  <dd class="url"><a href="https://www.zerotier.com">https://www.zerotier.com</a></dd>
+
+</dl>
+</section>
+
+<hr>
+
+<section id="data">
+<h2>Data &amp; Storage</h2>
+<dl>
+
+  <dt>VERACRYPT</dt>
+  <dd class="desc">On-the-fly disk encryption with plausible deniability via hidden volumes; successor to TrueCrypt, independently audited.</dd>
+  <dd class="url"><a href="https://veracrypt.fr">https://veracrypt.fr</a></dd>
+
+  <dt>AGE</dt>
+  <dd class="desc">Simple, modern file encryption; small auditable codebase, X25519 keys, designed to replace GPG for file encryption use cases.</dd>
+  <dd class="url"><a href="https://age-encryption.org">https://age-encryption.org</a></dd>
+
+  <dt>CRYPTOMATOR</dt>
+  <dd class="desc">Client-side encryption for cloud storage; open source, works with any provider, encrypts before upload.</dd>
+  <dd class="url"><a href="https://cryptomator.org">https://cryptomator.org</a></dd>
+
+  <dt>SYNCTHING</dt>
+  <dd class="desc">Continuous file synchronization between devices; no cloud, no central server, encrypted in transit. Replaces Dropbox without surrendering your data.</dd>
+  <dd class="url"><a href="https://syncthing.net">https://syncthing.net</a></dd>
+
+  <dt>NEXTCLOUD</dt>
+  <dd class="desc">Self-hosted file storage, calendar, and collaboration suite; full data sovereignty on your own server or trusted provider.</dd>
+  <dd class="url"><a href="https://nextcloud.com">https://nextcloud.com</a></dd>
+
+  <dt>RESTIC</dt>
+  <dd class="desc">Fast, secure, deduplicated backups encrypted at rest; supports local, SFTP, S3, and many other backends.</dd>
+  <dd class="url"><a href="https://restic.net">https://restic.net</a></dd>
+
+  <dt>BORGBACKUP</dt>
+  <dd class="desc">Deduplicating, encrypted backup; append-only mode prevents ransomware from deleting backup history. Well-audited.</dd>
+  <dd class="url"><a href="https://www.borgbackup.org">https://www.borgbackup.org</a></dd>
+
+  <dt>IPFS</dt>
+  <dd class="desc">Content-addressed distributed storage; files addressed by hash rather than location, making them censorship resistant by design.</dd>
+  <dd class="url"><a href="https://ipfs.tech">https://ipfs.tech</a></dd>
+
+  <dt>TAHOE-LAFS</dt>
+  <dd class="desc">Least-authority encrypted distributed filesystem; data split across storage nodes, no single node can read or destroy your files.</dd>
+  <dd class="url"><a href="https://tahoe-lafs.org">https://tahoe-lafs.org</a></dd>
+
+  <dt>GIT-ANNEX</dt>
+  <dd class="desc">Manages large files in git without storing content in the repo; tracks file presence across distributed repositories.</dd>
+  <dd class="url"><a href="https://git-annex.branchable.com">https://git-annex.branchable.com</a></dd>
+
+  <dt>GNUPG</dt>
+  <dd class="desc">OpenPGP implementation for file and email encryption, signing, and key management; the de facto standard for cryptographic identity.</dd>
+  <dd class="url"><a href="https://gnupg.org">https://gnupg.org</a></dd>
+
+  <dt>SQLITE</dt>
+  <dd class="desc">Serverless, zero-configuration, self-contained SQL database in a single file; portable, auditable, no server process required.</dd>
+  <dd class="url"><a href="https://www.sqlite.org">https://www.sqlite.org</a></dd>
+
+</dl>
+</section>
+
+<hr>
+
+<section id="identity">
+<h2>Identity &amp; Authentication</h2>
+<dl>
+
+  <dt>GNUPG / PGP</dt>
+  <dd class="desc">Cryptographic identity via keypairs; sign code, mail, files. Your key is your identity, anchored to nothing but math.</dd>
+  <dd class="url"><a href="https://gnupg.org">https://gnupg.org</a></dd>
+
+  <dt>NITROKEY</dt>
+  <dd class="desc">Open-hardware security key for GPG, FIDO2, and OTP; firmware auditable, manufactured in Germany, no proprietary components.</dd>
+  <dd class="url"><a href="https://www.nitrokey.com">https://www.nitrokey.com</a></dd>
+
+  <dt>SOLOKEYS</dt>
+  <dd class="desc">Open-source, open-hardware FIDO2 security key; fully auditable from PCB schematic to firmware. Community-developed.</dd>
+  <dd class="url"><a href="https://solokeys.com">https://solokeys.com</a></dd>
+
+  <dt>YUBIKEY</dt>
+  <dd class="desc">Widely supported hardware 2FA token; closed hardware (noted), but implements open protocols FIDO2/WebAuthn. Widely regarded as reliable.</dd>
+  <dd class="url"><a href="https://www.yubico.com">https://www.yubico.com</a></dd>
+
+  <dt>KEYOXIDE</dt>
+  <dd class="desc">Decentralized identity verification using OpenPGP proofs; no central server, verify identities across platforms without trusting a middleman.</dd>
+  <dd class="url"><a href="https://keyoxide.org">https://keyoxide.org</a></dd>
+
+  <dt>PASSKEYS / WEBAUTHN</dt>
+  <dd class="desc">Open W3C standard for phishing-resistant, passwordless authentication using device-held keys; no password database to breach.</dd>
+  <dd class="url"><a href="https://webauthn.io">https://webauthn.io</a></dd>
+
+  <dt>BITWARDEN</dt>
+  <dd class="desc">Open-source password manager; self-hostable server (Vaultwarden), independently audited. No proprietary cloud required.</dd>
+  <dd class="url"><a href="https://bitwarden.com">https://bitwarden.com</a></dd>
+
+  <dt>KEEPASSXC</dt>
+  <dd class="desc">Local-only open-source password manager; database is a single encrypted file, no network access, no sync unless you want it.</dd>
+  <dd class="url"><a href="https://keepassxc.org">https://keepassxc.org</a></dd>
+
+  <dt>DECENTRALIZED IDENTIFIERS (DIDs)</dt>
+  <dd class="desc">W3C standard for self-sovereign identity; identifiers controlled by keypair, no corporation issues or can revoke your identity.</dd>
+  <dd class="url"><a href="https://www.w3.org/TR/did-core/">https://www.w3.org/TR/did-core/</a></dd>
+
+  <dt>LET'S ENCRYPT / CERTBOT</dt>
+  <dd class="desc">Free, automated, open certificate authority; removes the cost barrier to TLS for self-hosted services. Widely deployed infrastructure.</dd>
+  <dd class="url"><a href="https://letsencrypt.org">https://letsencrypt.org</a></dd>
+
+  <dt>OPENID CONNECT</dt>
+  <dd class="desc">Open federated authentication standard; any compliant server can act as identity provider, no dependence on Google or Facebook login.</dd>
+  <dd class="url"><a href="https://openid.net/connect/">https://openid.net/connect/</a></dd>
+
+</dl>
+</section>
+
+<hr>
+
+<section id="money">
+<h2>Money &amp; Value Exchange</h2>
+<dl>
+
+  <dt>MONERO</dt>
+  <dd class="desc">Privacy-by-default cryptocurrency; ring signatures, stealth addresses, and RingCT hide sender, receiver, and amount on every transaction.</dd>
+  <dd class="url"><a href="https://www.getmonero.org">https://www.getmonero.org</a></dd>
+
+  <dt>BITCOIN</dt>
+  <dd class="desc">Permissionless, censorship-resistant store of value; non-custodial wallets require no third party, no account, no permission.</dd>
+  <dd class="url"><a href="https://bitcoin.org">https://bitcoin.org</a></dd>
+
+  <dt>LIGHTNING NETWORK</dt>
+  <dd class="desc">Layer-2 payment channels on Bitcoin; fast, low-fee, non-custodial payments without waiting for blockchain confirmation.</dd>
+  <dd class="url"><a href="https://lightning.network">https://lightning.network</a></dd>
+
+  <dt>BTCPAY SERVER</dt>
+  <dd class="desc">Self-hosted Bitcoin and Lightning payment processor; no third party, no percentage fees, complete sovereignty over your payment infrastructure.</dd>
+  <dd class="url"><a href="https://btcpayserver.org">https://btcpayserver.org</a></dd>
+
+  <dt>BISQ</dt>
+  <dd class="desc">Decentralized, non-custodial Bitcoin exchange; no KYC, no central operator, P2P trades with built-in dispute resolution.</dd>
+  <dd class="url"><a href="https://bisq.network">https://bisq.network</a></dd>
+
+  <dt>HAVENO</dt>
+  <dd class="desc">Decentralized exchange built for Monero trades; fork of Bisq, non-custodial, no KYC required.</dd>
+  <dd class="url"><a href="https://haveno.exchange">https://haveno.exchange</a></dd>
+
+  <dt>WASABI WALLET</dt>
+  <dd class="desc">Bitcoin wallet with built-in Coinjoin; reduces on-chain transaction traceability through trustless coin mixing.</dd>
+  <dd class="url"><a href="https://wasabiwallet.io">https://wasabiwallet.io</a></dd>
+
+  <dt>FEATHER WALLET</dt>
+  <dd class="desc">Lightweight Monero desktop wallet; Tor integration built in, no account required, fully open source.</dd>
+  <dd class="url"><a href="https://featherwallet.org">https://featherwallet.org</a></dd>
+
+  <dt>GNU TALER</dt>
+  <dd class="desc">Privacy-preserving electronic payment system; anonymous for buyers, taxable for merchants — designed to satisfy legal requirements without surveillance.</dd>
+  <dd class="url"><a href="https://taler.net">https://taler.net</a></dd>
+
+  <dt>CASHU</dt>
+  <dd class="desc">Chaumian e-cash protocol for Bitcoin and Lightning; bearer tokens provide strong payment privacy, minimal trust required.</dd>
+  <dd class="url"><a href="https://cashu.space">https://cashu.space</a></dd>
+
+  <dt>FEDIMINT</dt>
+  <dd class="desc">Federated Chaumian mint for Bitcoin custody; distributes trust across a community rather than a single custodian.</dd>
+  <dd class="url"><a href="https://fedimint.org">https://fedimint.org</a></dd>
+
+  <dt>OPENCOLLECTIVE</dt>
+  <dd class="desc">Transparent community fundraising with an open ledger; financial operations visible to all members, no hidden fees or opaque accounts.</dd>
+  <dd class="url"><a href="https://opencollective.com">https://opencollective.com</a></dd>
+
+</dl>
+</section>
+
+<hr>
+
+<section id="search">
+<h2>Search &amp; Browsing</h2>
+<dl>
+
+  <dt>TOR BROWSER</dt>
+  <dd class="desc">Firefox-based browser routed through the Tor network; fingerprinting resistance, NoScript by default. The baseline for anonymous browsing.</dd>
+  <dd class="url"><a href="https://www.torproject.org/download/">https://www.torproject.org/download/</a></dd>
+
+  <dt>LIBREWOLF</dt>
+  <dd class="desc">Firefox fork with privacy defaults already configured; no telemetry, uBlock Origin included, hardened user.js baked in.</dd>
+  <dd class="url"><a href="https://librewolf.net">https://librewolf.net</a></dd>
+
+  <dt>MULLVAD BROWSER</dt>
+  <dd class="desc">Firefox fork built with the Tor Project; fingerprint resistance without requiring Tor network, designed for VPN users.</dd>
+  <dd class="url"><a href="https://mullvad.net/browser">https://mullvad.net/browser</a></dd>
+
+  <dt>FIREFOX</dt>
+  <dd class="desc">The remaining non-Chromium major browser; open source, extensive hardening possible via arkenfox user.js. Still worth running.</dd>
+  <dd class="url"><a href="https://www.mozilla.org/firefox/">https://www.mozilla.org/firefox/</a></dd>
+
+  <dt>BRAVE</dt>
+  <dd class="desc">Chromium fork with built-in ad and tracker blocking; fingerprinting randomization, optional Tor windows for .onion browsing.</dd>
+  <dd class="url"><a href="https://brave.com">https://brave.com</a></dd>
+
+  <dt>SEARXNG</dt>
+  <dd class="desc">Self-hostable, open-source metasearch engine aggregating results from multiple sources without tracking queries. Run your own or use a community instance.</dd>
+  <dd class="url"><a href="https://docs.searxng.org">https://docs.searxng.org</a></dd>
+
+  <dt>WHOOGLE</dt>
+  <dd class="desc">Self-hosted Google search proxy; returns Google results without ads, tracking, JavaScript, or AMP pages.</dd>
+  <dd class="url"><a href="https://github.com/benbusby/whoogle-search">https://github.com/benbusby/whoogle-search</a></dd>
+
+  <dt>KAGI</dt>
+  <dd class="desc">Privacy-focused paid search engine; no advertising model, no behavioral profiling. Subscription business model removes the incentive for surveillance.</dd>
+  <dd class="url"><a href="https://kagi.com">https://kagi.com</a></dd>
+
+  <dt>UBLOCK ORIGIN</dt>
+  <dd class="desc">Open-source, highly efficient content blocker; uses filter lists, low memory footprint, widely audited. The essential browser extension.</dd>
+  <dd class="url"><a href="https://ublockorigin.com">https://ublockorigin.com</a></dd>
+
+  <dt>PRIVACY BADGER</dt>
+  <dd class="desc">EFF's tracker blocker using heuristic detection rather than static block lists; learns from behavior rather than requiring constant list updates.</dd>
+  <dd class="url"><a href="https://privacybadger.org">https://privacybadger.org</a></dd>
+
+  <dt>ARKENFOX USER.JS</dt>
+  <dd class="desc">Curated Firefox hardening configuration; systematic privacy and fingerprinting mitigation via about:config settings. Reference document for Firefox hardening.</dd>
+  <dd class="url"><a href="https://github.com/arkenfox/user.js">https://github.com/arkenfox/user.js</a></dd>
+
+</dl>
+</section>
+
+<hr>
+
+<section id="development">
+<h2>Development &amp; Collaboration</h2>
+<dl>
+
+  <dt>GIT</dt>
+  <dd class="desc">Distributed version control; no central server required, full history in every clone. The foundation of sovereign code collaboration.</dd>
+  <dd class="url"><a href="https://git-scm.com">https://git-scm.com</a></dd>
+
+  <dt>FORGEJO</dt>
+  <dd class="desc">Community fork of Gitea; self-hostable Git forge with issues, PRs, and CI. No Microsoft, no GitHub dependency required.</dd>
+  <dd class="url"><a href="https://forgejo.org">https://forgejo.org</a></dd>
+
+  <dt>CODEBERG</dt>
+  <dd class="desc">Non-profit Forgejo instance; public hosting for libre software projects, operated by a German non-profit, no surveillance capitalism.</dd>
+  <dd class="url"><a href="https://codeberg.org">https://codeberg.org</a></dd>
+
+  <dt>SOURCEHUT</dt>
+  <dd class="desc">Minimal, email-based software forge; no JavaScript required to browse or interact, entirely open source. Runs on plain HTTP.</dd>
+  <dd class="url"><a href="https://sr.ht">https://sr.ht</a></dd>
+
+  <dt>RADICLE</dt>
+  <dd class="desc">Peer-to-peer code collaboration over a sovereign stack; Git repositories published over a decentralized protocol with cryptographic identity.</dd>
+  <dd class="url"><a href="https://radicle.xyz">https://radicle.xyz</a></dd>
+
+  <dt>FOSSIL SCM</dt>
+  <dd class="desc">Distributed VCS with integrated wiki, bug tracker, and forum in a single binary; self-contained, no external services needed.</dd>
+  <dd class="url"><a href="https://fossil-scm.org">https://fossil-scm.org</a></dd>
+
+  <dt>REPRODUCIBLE BUILDS</dt>
+  <dd class="desc">Project and tooling to verify that source compiles deterministically to the same binary; closes the gap between audited source and running executable.</dd>
+  <dd class="url"><a href="https://reproducible-builds.org">https://reproducible-builds.org</a></dd>
+
+  <dt>NIX / GUIX PACKAGE MANAGERS</dt>
+  <dd class="desc">Functional package management with cryptographic build reproducibility and atomic rollback; any build can be reproduced by anyone.</dd>
+  <dd class="url"><a href="https://nixos.org/nix/">https://nixos.org/nix/</a></dd>
+
+  <dt>ETHERPAD</dt>
+  <dd class="desc">Open-source collaborative text editor; self-hostable, real-time, no Google Docs account required.</dd>
+  <dd class="url"><a href="https://etherpad.org">https://etherpad.org</a></dd>
+
+  <dt>GITOXIDE</dt>
+  <dd class="desc">Pure Rust reimplementation of git; memory-safe, fast, auditable alternative to the C git implementation.</dd>
+  <dd class="url"><a href="https://github.com/Byron/gitoxide">https://github.com/Byron/gitoxide</a></dd>
+
+  <dt>TMATE</dt>
+  <dd class="desc">Terminal sharing over SSH; open source, self-hostable pair-programming without screen share or proprietary cloud services.</dd>
+  <dd class="url"><a href="https://tmate.io">https://tmate.io</a></dd>
+
+  <dt>MERCURIAL</dt>
+  <dd class="desc">Distributed VCS with a clean data model and strong history integrity guarantees; simpler than git for many workflows.</dd>
+  <dd class="url"><a href="https://www.mercurial-scm.org">https://www.mercurial-scm.org</a></dd>
+
+  <dt>DEBIAN SALSA</dt>
+  <dd class="desc">Debian's self-hosted GitLab instance; community infrastructure for libre package collaboration, operated by the Debian project.</dd>
+  <dd class="url"><a href="https://salsa.debian.org">https://salsa.debian.org</a></dd>
+
+</dl>
+</section>
+
+<hr>
+
+<section id="ai">
+<h2>AI &amp; Computation</h2>
+<dl>
+
+  <dt>OLLAMA</dt>
+  <dd class="desc">Run open-weight LLMs locally; one-command setup for Llama, Mistral, Gemma, and others — no cloud, no data sent to third parties.</dd>
+  <dd class="url"><a href="https://ollama.com">https://ollama.com</a></dd>
+
+  <dt>LLAMA.CPP</dt>
+  <dd class="desc">C/C++ inference engine for LLaMA-family models; runs on CPU with no GPU or cloud dependency, minimal footprint.</dd>
+  <dd class="url"><a href="https://github.com/ggml-org/llama.cpp">https://github.com/ggml-org/llama.cpp</a></dd>
+
+  <dt>JAN</dt>
+  <dd class="desc">Open-source, fully offline AI assistant desktop application; local model runner with chat interface, no telemetry.</dd>
+  <dd class="url"><a href="https://jan.ai">https://jan.ai</a></dd>
+
+  <dt>OPEN WEBUI</dt>
+  <dd class="desc">Self-hosted web interface for Ollama and OpenAI-compatible APIs; all requests stay on your infrastructure.</dd>
+  <dd class="url"><a href="https://openwebui.com">https://openwebui.com</a></dd>
+
+  <dt>LOCALAI</dt>
+  <dd class="desc">OpenAI API-compatible local inference server; drop-in replacement for cloud API calls using locally-run models.</dd>
+  <dd class="url"><a href="https://localai.io">https://localai.io</a></dd>
+
+  <dt>LM STUDIO</dt>
+  <dd class="desc">Desktop GUI for running local open-weight models; offline inference, no telemetry when in offline mode. Source-available.</dd>
+  <dd class="url"><a href="https://lmstudio.ai">https://lmstudio.ai</a></dd>
+
+  <dt>WHISPER.CPP</dt>
+  <dd class="desc">Local speech-to-text using OpenAI's Whisper model weights; runs on CPU, fully offline, no audio sent to any server.</dd>
+  <dd class="url"><a href="https://github.com/ggerganov/whisper.cpp">https://github.com/ggerganov/whisper.cpp</a></dd>
+
+  <dt>COMFYUI</dt>
+  <dd class="desc">Node-based local interface for Stable Diffusion; fully offline, no account required, modular pipeline design.</dd>
+  <dd class="url"><a href="https://github.com/comfyanonymous/ComfyUI">https://github.com/comfyanonymous/ComfyUI</a></dd>
+
+  <dt>PETALS</dt>
+  <dd class="desc">Distributed inference for large models across volunteer machines; decentralized compute enables running models too large for a single machine.</dd>
+  <dd class="url"><a href="https://petals.dev">https://petals.dev</a></dd>
+
+  <dt>AKASH NETWORK</dt>
+  <dd class="desc">Decentralized cloud compute marketplace; rent compute from providers globally without dependence on AWS, GCP, or Azure.</dd>
+  <dd class="url"><a href="https://akash.network">https://akash.network</a></dd>
+
+  <dt>ONNX RUNTIME</dt>
+  <dd class="desc">Cross-platform ML model inference; run models from any framework locally without cloud SDKs or vendor lock-in.</dd>
+  <dd class="url"><a href="https://onnxruntime.ai">https://onnxruntime.ai</a></dd>
+
+  <dt>HUGGING FACE (local)</dt>
+  <dd class="desc">Open model hub; download weights and run locally — the hub enables model discovery, sovereignty comes from running them yourself.</dd>
+  <dd class="url"><a href="https://huggingface.co">https://huggingface.co</a></dd>
+
+</dl>
+</section>
+
+<hr>
+
+<section id="governance">
+<h2>Governance &amp; Coordination</h2>
+<dl>
+
+  <dt>NOSTR (protocol)</dt>
+  <dd class="desc">Decentralized, censorship-resistant social protocol; no central server, identity is a keypair, relay network is permissionless.</dd>
+  <dd class="url"><a href="https://nostr.com">https://nostr.com</a></dd>
+
+  <dt>MASTODON</dt>
+  <dd class="desc">Federated microblogging on the ActivityPub protocol; self-hostable, no algorithmic feed, no corporate owner of the network.</dd>
+  <dd class="url"><a href="https://joinmastodon.org">https://joinmastodon.org</a></dd>
+
+  <dt>AT PROTOCOL / BLUESKY</dt>
+  <dd class="desc">Open protocol for decentralized social networking; portable identity and data portability built into the protocol design.</dd>
+  <dd class="url"><a href="https://atproto.com">https://atproto.com</a></dd>
+
+  <dt>MATRIX SPACES</dt>
+  <dd class="desc">Federated community spaces over the Matrix protocol; self-governed group infrastructure without Discord or Slack dependency.</dd>
+  <dd class="url"><a href="https://matrix.org">https://matrix.org</a></dd>
+
+  <dt>LOOMIO</dt>
+  <dd class="desc">Open-source, self-hostable cooperative decision-making tool; supports consent and consensus processes, used by cooperatives worldwide.</dd>
+  <dd class="url"><a href="https://www.loomio.com">https://www.loomio.com</a></dd>
+
+  <dt>DECIDIM</dt>
+  <dd class="desc">Open-source participatory democracy platform; used by cities and organizations for budgets, proposals, and assemblies. Self-hostable.</dd>
+  <dd class="url"><a href="https://decidim.org">https://decidim.org</a></dd>
+
+  <dt>ARAGON</dt>
+  <dd class="desc">On-chain DAO framework on Ethereum; create and govern organizations via smart contracts with on-chain treasury management.</dd>
+  <dd class="url"><a href="https://aragon.org">https://aragon.org</a></dd>
+
+  <dt>SNAPSHOT</dt>
+  <dd class="desc">Off-chain, gasless governance voting for DAOs; uses signed messages, results stored on IPFS — governance without transaction fees.</dd>
+  <dd class="url"><a href="https://snapshot.org">https://snapshot.org</a></dd>
+
+  <dt>CONSUL</dt>
+  <dd class="desc">Open-source citizen participation platform for budgeting, proposals, and public debates; used by cities and institutions globally.</dd>
+  <dd class="url"><a href="https://consulproject.org">https://consulproject.org</a></dd>
+
+  <dt>METAGOV</dt>
+  <dd class="desc">Research collective building open infrastructure for online community self-governance; protocols and tools for modular governance design.</dd>
+  <dd class="url"><a href="https://metagov.org">https://metagov.org</a></dd>
+
+</dl>
+</section>
+
+<hr>
+
+<footer>
+<p class="footer-statement">CROPS CIRCLE was kickstarted by Public Nouns. We believe public goods in the form of secure and sovereign open source software should be a priority for the counterculture.</p>
+
+<p class="footer-statement">We are fundraising a treasury with the goal of awarding microgrants to grassroots organizations and movements looking to adopt CROPS tools. For more info, contact us at <a href="mailto:cropscircle@protonmail.com">CROPSCIRCLE@PROTONMAIL.COM</a>.</p>
+
+<div class="footer-pr">
+  <a href="#" class="pr-button" role="button" aria-disabled="true">Open a GitHub PR</a>
+  <p class="pr-explainer">CROPS CIRCLE is a peer-curated website.</p>
+</div>
+
+<div class="footer-meta">
+<p>CROPS Circle — Censorship Resistant, Open Source, Private, Secure</p>
+<!-- update monthly -->
+<p>Last indexed: March 2026</p>
+<p>No tracking. No cookies. No JavaScript.</p>
+</div>
+</footer>
+
+</main>
+</body>
+</html>
