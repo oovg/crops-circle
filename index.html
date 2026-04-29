@@ -99,6 +99,13 @@ main {
   margin: 0;
 }
 
+.hero-center-image {
+  width: min(100%, 640px);
+  height: auto;
+  object-fit: contain;
+  max-width: 420px
+}
+
 .hero-bottom {
   display: flex;
   justify-content: space-between;
@@ -171,6 +178,34 @@ main {
   color: var(--link);
 }
 
+.crops-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin: 2rem 0 0.6rem;
+}
+
+.crops-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+}
+
+.crops-label {
+  margin: 0;
+  flex: 0 0 44%;
+}
+
+.crops-label-line {
+  display: block;
+}
+
+.crops-item .def {
+  flex: 1;
+  margin-left: 0;
+}
+
 .site-title {
   font-size: clamp(3rem, 14vw, 9rem);
   font-weight: 900;
@@ -201,7 +236,7 @@ pre.acronym {
 
 h1 {
   font-family: var(--display);
-  font-size: 0.85rem;
+  font-size: 1.5rem;
   font-weight: 900;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -211,12 +246,27 @@ h1 {
 
 h2 {
   font-family: var(--display);
-  font-size: 0.85rem;
+  font-size: 1.25rem;
   font-weight: 900;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--text);
   margin-bottom: 1.25rem;
+}
+
+h3 {
+  font-family: var(--display);
+  font-size: 1rem;
+  font-weight: 900;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text);
+  margin-bottom: 0rem;
+}
+
+.halogen-light {
+  font-family: var(--display);
+  font-weight: 300;
 }
 
 .flood { 
@@ -416,6 +466,16 @@ footer p {
   user-select: none;
 }
 
+.quiz-launch-button::after {
+  content: " \25BE";
+  font-size: 1.05em;
+  font-weight: 700;
+}
+
+.quiz-button-choice {
+  display: none;
+}
+
 .quiz-launch-button:hover,
 .quiz-launch-button:focus {
   background: var(--link);
@@ -523,23 +583,7 @@ footer p {
   margin-top: 0.25rem;
 }
 
-.quiz-filter-status {
-  display: none;
-  margin: 0.4rem 0 0.5rem;
-  font-size: 0.8rem;
-  color: var(--dim);
-}
-
-.quiz-clear-button {
-  display: none;
-  margin: 0 0 0.75rem;
-  padding: 0.45rem 0.7rem;
-  border: 1px solid var(--hr);
-  color: var(--text);
-  font-family: var(--mono);
-  font-size: 0.74rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+.quiz-browse-reset {
   cursor: pointer;
 }
 
@@ -570,28 +614,30 @@ footer p {
   display: block;
 }
 
-/* Show clear filter controls when a filter is selected. */
-#need-communicate:checked ~ .quiz-launcher .quiz-filter-status,
-#need-anonymous:checked   ~ .quiz-launcher .quiz-filter-status,
-#need-device:checked      ~ .quiz-launcher .quiz-filter-status,
-#need-data:checked        ~ .quiz-launcher .quiz-filter-status,
-#need-money:checked       ~ .quiz-launcher .quiz-filter-status,
-#need-browse:checked      ~ .quiz-launcher .quiz-filter-status,
-#need-infra:checked       ~ .quiz-launcher .quiz-filter-status,
-#need-build:checked       ~ .quiz-launcher .quiz-filter-status,
-#need-ai:checked          ~ .quiz-launcher .quiz-filter-status,
-#need-govern:checked      ~ .quiz-launcher .quiz-filter-status,
-#need-communicate:checked ~ .quiz-launcher .quiz-clear-button,
-#need-anonymous:checked   ~ .quiz-launcher .quiz-clear-button,
-#need-device:checked      ~ .quiz-launcher .quiz-clear-button,
-#need-data:checked        ~ .quiz-launcher .quiz-clear-button,
-#need-money:checked       ~ .quiz-launcher .quiz-clear-button,
-#need-browse:checked      ~ .quiz-launcher .quiz-clear-button,
-#need-infra:checked       ~ .quiz-launcher .quiz-clear-button,
-#need-build:checked       ~ .quiz-launcher .quiz-clear-button,
-#need-ai:checked          ~ .quiz-launcher .quiz-clear-button,
-#need-govern:checked      ~ .quiz-launcher .quiz-clear-button {
-  display: inline-block;
+#need-communicate:checked ~ .quiz-launcher .quiz-button-default,
+#need-anonymous:checked   ~ .quiz-launcher .quiz-button-default,
+#need-device:checked      ~ .quiz-launcher .quiz-button-default,
+#need-data:checked        ~ .quiz-launcher .quiz-button-default,
+#need-money:checked       ~ .quiz-launcher .quiz-button-default,
+#need-browse:checked      ~ .quiz-launcher .quiz-button-default,
+#need-infra:checked       ~ .quiz-launcher .quiz-button-default,
+#need-build:checked       ~ .quiz-launcher .quiz-button-default,
+#need-ai:checked          ~ .quiz-launcher .quiz-button-default,
+#need-govern:checked      ~ .quiz-launcher .quiz-button-default {
+  display: none;
+}
+
+#need-communicate:checked ~ .quiz-launcher .quiz-button-choice.choice-communicate,
+#need-anonymous:checked   ~ .quiz-launcher .quiz-button-choice.choice-anonymous,
+#need-device:checked      ~ .quiz-launcher .quiz-button-choice.choice-device,
+#need-data:checked        ~ .quiz-launcher .quiz-button-choice.choice-data,
+#need-money:checked       ~ .quiz-launcher .quiz-button-choice.choice-money,
+#need-browse:checked      ~ .quiz-launcher .quiz-button-choice.choice-browse,
+#need-infra:checked       ~ .quiz-launcher .quiz-button-choice.choice-infra,
+#need-build:checked       ~ .quiz-launcher .quiz-button-choice.choice-build,
+#need-ai:checked          ~ .quiz-launcher .quiz-button-choice.choice-ai,
+#need-govern:checked      ~ .quiz-launcher .quiz-button-choice.choice-govern {
+  display: inline;
 }
 
 /* Back control is not needed in the new filter flow. */
@@ -651,103 +697,36 @@ html:has(#quiz-open:checked) {
 }
 
 /* Filter complete index sections by selected quiz need. */
-html:has(#need-communicate:checked) #hardware,
-html:has(#need-communicate:checked) #os,
-html:has(#need-communicate:checked) #networking,
-html:has(#need-communicate:checked) #data,
-html:has(#need-communicate:checked) #identity,
-html:has(#need-communicate:checked) #money,
-html:has(#need-communicate:checked) #search,
-html:has(#need-communicate:checked) #development,
-html:has(#need-communicate:checked) #ai,
-html:has(#need-communicate:checked) #governance,
-html:has(#need-anonymous:checked) #hardware,
-html:has(#need-anonymous:checked) #communication,
-html:has(#need-anonymous:checked) #data,
-html:has(#need-anonymous:checked) #identity,
-html:has(#need-anonymous:checked) #money,
-html:has(#need-anonymous:checked) #search,
-html:has(#need-anonymous:checked) #development,
-html:has(#need-anonymous:checked) #ai,
-html:has(#need-anonymous:checked) #governance,
-html:has(#need-device:checked) #communication,
-html:has(#need-device:checked) #networking,
-html:has(#need-device:checked) #data,
-html:has(#need-device:checked) #identity,
-html:has(#need-device:checked) #money,
-html:has(#need-device:checked) #search,
-html:has(#need-device:checked) #development,
-html:has(#need-device:checked) #ai,
-html:has(#need-device:checked) #governance,
-html:has(#need-data:checked) #hardware,
-html:has(#need-data:checked) #os,
-html:has(#need-data:checked) #communication,
-html:has(#need-data:checked) #networking,
-html:has(#need-data:checked) #identity,
-html:has(#need-data:checked) #money,
-html:has(#need-data:checked) #search,
-html:has(#need-data:checked) #development,
-html:has(#need-data:checked) #ai,
-html:has(#need-data:checked) #governance,
-html:has(#need-money:checked) #hardware,
-html:has(#need-money:checked) #os,
-html:has(#need-money:checked) #communication,
-html:has(#need-money:checked) #networking,
-html:has(#need-money:checked) #data,
-html:has(#need-money:checked) #identity,
-html:has(#need-money:checked) #search,
-html:has(#need-money:checked) #development,
-html:has(#need-money:checked) #ai,
-html:has(#need-money:checked) #governance,
-html:has(#need-browse:checked) #hardware,
-html:has(#need-browse:checked) #os,
-html:has(#need-browse:checked) #communication,
-html:has(#need-browse:checked) #networking,
-html:has(#need-browse:checked) #data,
-html:has(#need-browse:checked) #identity,
-html:has(#need-browse:checked) #money,
-html:has(#need-browse:checked) #development,
-html:has(#need-browse:checked) #ai,
-html:has(#need-browse:checked) #governance,
-html:has(#need-infra:checked) #os,
-html:has(#need-infra:checked) #communication,
-html:has(#need-infra:checked) #data,
-html:has(#need-infra:checked) #identity,
-html:has(#need-infra:checked) #money,
-html:has(#need-infra:checked) #search,
-html:has(#need-infra:checked) #development,
-html:has(#need-infra:checked) #ai,
-html:has(#need-infra:checked) #governance,
-html:has(#need-build:checked) #hardware,
-html:has(#need-build:checked) #os,
-html:has(#need-build:checked) #communication,
-html:has(#need-build:checked) #networking,
-html:has(#need-build:checked) #data,
-html:has(#need-build:checked) #identity,
-html:has(#need-build:checked) #money,
-html:has(#need-build:checked) #search,
-html:has(#need-build:checked) #ai,
-html:has(#need-build:checked) #governance,
-html:has(#need-ai:checked) #hardware,
-html:has(#need-ai:checked) #os,
-html:has(#need-ai:checked) #communication,
-html:has(#need-ai:checked) #networking,
-html:has(#need-ai:checked) #data,
-html:has(#need-ai:checked) #identity,
-html:has(#need-ai:checked) #money,
-html:has(#need-ai:checked) #search,
-html:has(#need-ai:checked) #development,
-html:has(#need-ai:checked) #governance,
-html:has(#need-govern:checked) #hardware,
-html:has(#need-govern:checked) #os,
-html:has(#need-govern:checked) #communication,
-html:has(#need-govern:checked) #networking,
-html:has(#need-govern:checked) #data,
-html:has(#need-govern:checked) #identity,
-html:has(#need-govern:checked) #money,
-html:has(#need-govern:checked) #search,
-html:has(#need-govern:checked) #development,
-html:has(#need-govern:checked) #ai {
+html:has(#need-communicate:checked) :is(#complete-index, #hardware, #os, #networking, #data, #identity, #money, #search, #development, #ai, #governance),
+html:has(#need-communicate:checked) :is(#complete-index, #hardware, #os, #networking, #data, #identity, #money, #search, #development, #ai, #governance) + hr,
+html:has(#need-communicate:checked) hr:has(+ :is(#complete-index, #hardware, #os, #networking, #data, #identity, #money, #search, #development, #ai, #governance)),
+html:has(#need-anonymous:checked) :is(#complete-index, #hardware, #communication, #data, #identity, #money, #search, #development, #ai, #governance),
+html:has(#need-anonymous:checked) :is(#complete-index, #hardware, #communication, #data, #identity, #money, #search, #development, #ai, #governance) + hr,
+html:has(#need-anonymous:checked) hr:has(+ :is(#complete-index, #hardware, #communication, #data, #identity, #money, #search, #development, #ai, #governance)),
+html:has(#need-device:checked) :is(#complete-index, #communication, #networking, #data, #identity, #money, #search, #development, #ai, #governance),
+html:has(#need-device:checked) :is(#complete-index, #communication, #networking, #data, #identity, #money, #search, #development, #ai, #governance) + hr,
+html:has(#need-device:checked) hr:has(+ :is(#complete-index, #communication, #networking, #data, #identity, #money, #search, #development, #ai, #governance)),
+html:has(#need-data:checked) :is(#complete-index, #hardware, #os, #communication, #networking, #identity, #money, #search, #development, #ai, #governance),
+html:has(#need-data:checked) :is(#complete-index, #hardware, #os, #communication, #networking, #identity, #money, #search, #development, #ai, #governance) + hr,
+html:has(#need-data:checked) hr:has(+ :is(#complete-index, #hardware, #os, #communication, #networking, #identity, #money, #search, #development, #ai, #governance)),
+html:has(#need-money:checked) :is(#complete-index, #hardware, #os, #communication, #networking, #data, #identity, #search, #development, #ai, #governance),
+html:has(#need-money:checked) :is(#complete-index, #hardware, #os, #communication, #networking, #data, #identity, #search, #development, #ai, #governance) + hr,
+html:has(#need-money:checked) hr:has(+ :is(#complete-index, #hardware, #os, #communication, #networking, #data, #identity, #search, #development, #ai, #governance)),
+html:has(#need-browse:checked) :is(#complete-index, #hardware, #os, #communication, #networking, #data, #identity, #money, #development, #ai, #governance),
+html:has(#need-browse:checked) :is(#complete-index, #hardware, #os, #communication, #networking, #data, #identity, #money, #development, #ai, #governance) + hr,
+html:has(#need-browse:checked) hr:has(+ :is(#complete-index, #hardware, #os, #communication, #networking, #data, #identity, #money, #development, #ai, #governance)),
+html:has(#need-infra:checked) :is(#complete-index, #os, #communication, #data, #identity, #money, #search, #development, #ai, #governance),
+html:has(#need-infra:checked) :is(#complete-index, #os, #communication, #data, #identity, #money, #search, #development, #ai, #governance) + hr,
+html:has(#need-infra:checked) hr:has(+ :is(#complete-index, #os, #communication, #data, #identity, #money, #search, #development, #ai, #governance)),
+html:has(#need-build:checked) :is(#complete-index, #hardware, #os, #communication, #networking, #data, #identity, #money, #search, #ai, #governance),
+html:has(#need-build:checked) :is(#complete-index, #hardware, #os, #communication, #networking, #data, #identity, #money, #search, #ai, #governance) + hr,
+html:has(#need-build:checked) hr:has(+ :is(#complete-index, #hardware, #os, #communication, #networking, #data, #identity, #money, #search, #ai, #governance)),
+html:has(#need-ai:checked) :is(#complete-index, #hardware, #os, #communication, #networking, #data, #identity, #money, #search, #development, #governance),
+html:has(#need-ai:checked) :is(#complete-index, #hardware, #os, #communication, #networking, #data, #identity, #money, #search, #development, #governance) + hr,
+html:has(#need-ai:checked) hr:has(+ :is(#complete-index, #hardware, #os, #communication, #networking, #data, #identity, #money, #search, #development, #governance)),
+html:has(#need-govern:checked) :is(#complete-index, #hardware, #os, #communication, #networking, #data, #identity, #money, #search, #development, #ai),
+html:has(#need-govern:checked) :is(#complete-index, #hardware, #os, #communication, #networking, #data, #identity, #money, #search, #development, #ai) + hr,
+html:has(#need-govern:checked) hr:has(+ :is(#complete-index, #hardware, #os, #communication, #networking, #data, #identity, #money, #search, #development, #ai)) {
   display: none;
 }
 
@@ -766,15 +745,15 @@ html:has(#need-govern:checked) #ai {
   }
   .hero-top {
     min-height: 0;
-    align-items: start;
+    align-items: center;
   }
   .hero-brand {
-    font-size: clamp(1.35rem, 7vw, 2.25rem);
+    font-size: 1rem;
     letter-spacing: 0.12em;
   }
   .hero-id {
-    width: min(120px, 26vw);
-    height: min(120px, 26vw);
+    width: min(60px, 25vw);
+    height: min(60px, 25vw);
     justify-self: end;
   }
   .hero-center {
@@ -850,7 +829,7 @@ html:has(#need-govern:checked) #ai {
     <img src="images/crops_id.png" alt="CROPS Circle mark" class="hero-id" width="60" height="60">
   </div>
   <div class="hero-center">
-    <h1 class="site-title">CROPS<br><span class="word-circle">CIRCLE</span></h1>
+    <img src="images/crops_list.png" alt="CROPS CIRCLE" class="hero-center-image">
   </div>
   <div class="hero-bottom">
     <p class="hero-tagline">It&rsquo;s Time to Get Out</p>
@@ -864,37 +843,35 @@ html:has(#need-govern:checked) #ai {
 <div class="poem">
   <p><span class="loud">CROPS Circle</span> indexes tools for coordination and creation free of predation, extraction, censorship or surveillance by power of all stripes (nation-states, multinational corporations, oligarchs). We believe in technology as a tool for the autonomy and thriving of the many rather than the enrichment of the few.</p>
 
-  <p class="gap">CROPS technologies are</p>
-  <p class="i1 loud"><span class="crops-letter">C</span>ensorship&#8209;</p>
-  <p class="i1 loud"><span class="crops-letter">R</span>esistant <span class="def">cannot be removed or blocked by a platform or government</span></p>
-  <p class="i1 loud"><span class="crops-letter">O</span>pen Source <span class="def">source code is publicly available to read, audit, and modify</span></p>
-  <p class="i1 loud"><span class="crops-letter">P</span>rivate <span class="def">does not collect or share your personal data</span></p>
-  <p class="i1 loud"><span class="crops-letter">S</span>ecure <span class="def">designed to resist unauthorized access and attack</span></p>
+  <div class="crops-list">
+    <div class="crops-item">
+      <h3 class="crops-label">
+        <span class="crops-label-line"><span class="crops-letter">C</span><span class="halogen-light">ensorship&#8209;</span></span>
+        <span class="crops-label-line"><span class="crops-letter">R</span><span class="halogen-light">esistance</span></span>
+      </h3>
+      <span class="def">cannot be removed or blocked by a platform or government</span>
+    </div>
+    <div class="crops-item">
+      <h3 class="crops-label"><span class="crops-letter">O</span><span class="halogen-light">pen Source</span></h3>
+      <span class="def">source code is publicly available to read, audit, and modify</span>
+    </div>
+    <div class="crops-item">
+      <h3 class="crops-label"><span class="crops-letter">P</span><span class="halogen-light">rivacy</span></h3>
+      <span class="def">does not collect or share your personal data</span>
+    </div>
+    <div class="crops-item">
+      <h3 class="crops-label"><span class="crops-letter">S</span><span class="halogen-light">ecurity</span></h3>
+      <span class="def">designed to resist unauthorized access and attack</span>
+    </div>
+  </div>
 
-  <p class="gap i2"><a href="#index">Find what you need &gt;&gt;&gt;</a></p>
+  <p class="gap"><a href="#index">Find what you need &gt;&gt;&gt;</a></p>
 </div>
 </section>
 
 <hr>
 
-<div class="poem" role="banner" aria-label="CROPS Circle — opening statement">
-  <p><span class="faded">Silicon Valley</span> wants to</p>
-  <p class="i1 loud">drive us fucking insane.</p>
-
-  <p class="gap faded">To reclaim our minds,</p>
-  <p class="i1 med">we have to reclaim our technology.</p>
-
-  <p class="gap">When we run our own <span class="mono">servers,</span></p>
-  <p>build and repair our own <span class="mono">hardware,</span></p>
-  <p>own our own <span class="mono">data,</span></p>
-  <p class="i1">and construct our own <span class="mono">algorithms,</span></p>
-
-  <p class="gap i2">the world ceases to be</p>
-  <p class="i3 faded">a focus group formula</p>
-  <p class="i2">and becomes</p>
-  <p class="i2"><span class="alien-word">alien</span></p>
-  <p class="i3 faded">again.</p>
-</div>
+<p>Silicon Valley wants to drive us insane. To reclaim our minds, we have to reclaim our technology. When we run our own servers, build and repair our own hardware, own our own data, and construct our own algorithms, the world ceases to be a focus group formula and becomes alien again.</p>
 
 <hr>
 
@@ -917,10 +894,20 @@ html:has(#need-govern:checked) #ai {
   <div class="quiz-launcher">
     <p class="quiz-greeting">Hello, anon.</p>
     <p class="quiz-question">What are your technology needs?</p>
-    <label for="quiz-open" class="quiz-launch-button" role="button" tabindex="0">Select</label>
-    <p class="quiz-filter-status">Filter active.</p>
-    <label for="quiz-closed" class="quiz-clear-button" role="button" tabindex="0">Clear selection</label>
-    <p class="quiz-browse-all"><a href="#complete-index">Browse the complete index &darr;</a></p>
+    <label for="quiz-open" class="quiz-launch-button" role="button" tabindex="0">
+      <span class="quiz-button-default">Select</span>
+      <span class="quiz-button-choice choice-communicate">Communicate privately</span>
+      <span class="quiz-button-choice choice-anonymous">Stay anonymous online</span>
+      <span class="quiz-button-choice choice-device">Secure my device</span>
+      <span class="quiz-button-choice choice-data">Own my data</span>
+      <span class="quiz-button-choice choice-money">Transact without surveillance</span>
+      <span class="quiz-button-choice choice-browse">Browse without being tracked</span>
+      <span class="quiz-button-choice choice-infra">Run my own infrastructure</span>
+      <span class="quiz-button-choice choice-build">Build and collaborate freely</span>
+      <span class="quiz-button-choice choice-ai">Run AI without the cloud</span>
+      <span class="quiz-button-choice choice-govern">Coordinate with my community</span>
+    </label>
+    <p class="quiz-browse-all"><label for="quiz-closed" class="quiz-browse-reset" role="button" tabindex="0">Browse the complete index &darr;</label></p>
   </div>
 
   <div class="quiz-modal" role="dialog" aria-modal="true" aria-label="Technology needs">
@@ -1810,20 +1797,21 @@ html:has(#need-govern:checked) #ai {
 </dl>
 </section>
 
-<hr>
+
 
 <footer>
-<p class="footer-statement">CROPS CIRCLE was kickstarted by Public Nouns. We believe public goods in the form of secure and sovereign open source software should be a priority for the counterculture.</p>
+<hr>
+<p class="footer-statement">CROPS CIRCLE was kickstarted by <a href="https://publicnouns.wtf" target="_blank">Public Nouns</a>. We believe public goods in the form of secure and sovereign open source software should be a priority for the counterculture.</p>
 
-<p class="footer-statement">We are fundraising a treasury with the goal of awarding microgrants to grassroots organizations and movements looking to adopt CROPS tools. For more info, contact us at <a href="mailto:cropscircle@protonmail.com">CROPSCIRCLE@PROTONMAIL.COM</a>.</p>
+<p class="footer-statement">We are fundraising a treasury with the goal of awarding microgrants to grassroots organizations and movements looking to adopt CROPS tools. For more info, contact us at <a href="mailto:cropscircle@proton.me">cropscircle@proton.me</a>.</p>
 
 <div class="footer-pr">
-  <a href="#" class="pr-button" role="button" aria-disabled="true">Open a GitHub PR</a>
+  <a href="https://github.com/oovg/crops-circle" class="pr-button" role="button" aria-disabled="true" target="_blank">Open a GitHub PR</a>
   <p class="pr-explainer">CROPS CIRCLE is a peer-curated website.</p>
 </div>
 
 <div class="footer-meta">
-<p>CROPS Circle — Censorship Resistant, Open Source, Private, Secure</p>
+<p>CROPS Circle — Censorship Resistance, Open Source, Privacy, Security</p>
 <!-- update monthly -->
 <p>Last indexed: March 2026</p>
 <p>No tracking. No cookies. No JavaScript.</p>
