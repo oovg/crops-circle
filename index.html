@@ -51,6 +51,9 @@ main {
 
 /* Full-width hero */
 .hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
   width: 100%;
   min-height: min(92vh, 920px);
   display: grid;
@@ -61,10 +64,94 @@ main {
   border-bottom: 1px solid var(--hr);
 }
 
+/* CSS-only background slideshow (replaces single ::before image) */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-color: var(--bg);
+}
+
+.hero-bg-slide {
+  position: absolute;
+  inset: 0;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 0;
+  animation: heroBgCross 64s infinite ease-in-out;
+}
+
+.hero-bg-slide:nth-child(1) {
+  background-image: url("images/malkovich.jpg");
+  animation-delay: 0s;
+}
+
+.hero-bg-slide:nth-child(2) {
+  background-image: url("images/doom.jpg");
+  animation-delay: -8s;
+}
+
+.hero-bg-slide:nth-child(3) {
+  background-image: url("images/dogtooth.jpg");
+  animation-delay: -16s;
+}
+
+.hero-bg-slide:nth-child(4) {
+  background-image: url("images/morverncallar.jpg");
+  animation-delay: -24s;
+}
+
+.hero-bg-slide:nth-child(5) {
+  background-image: url("images/ghostdog.jpg");
+  animation-delay: -32s;
+}
+
+.hero-bg-slide:nth-child(6) {
+  background-image: url("images/melancholia_filtered.jpg");
+  animation-delay: -40s;
+}
+
+.hero-bg-slide:nth-child(7) {
+  background-image: url("images/monkeys.jpg");
+  animation-delay: -48s;
+}
+
+.hero-bg-slide:nth-child(8) {
+  background-image: url("images/alphaville.jpg");
+  animation-delay: -56s;
+}
+
+@keyframes heroBgCross {
+  0% { opacity: 0; }
+  1% { opacity: 1; }
+  11% { opacity: 1; }
+  12.5% { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-bg-slide {
+    animation: none !important;
+    opacity: 0 !important;
+  }
+  .hero-bg-slide:first-child {
+    opacity: 1 !important;
+  }
+}
+
+.hero-top,
+.hero-center,
+.hero-bottom {
+  position: relative;
+  z-index: 1;
+}
+
 .hero-top {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
-  align-items: center;
+  align-items: start;
   gap: 1rem;
   min-height: 120px;
 }
@@ -78,6 +165,12 @@ main {
   color: var(--text);
   font-size: 1rem;
   line-height: 0.95;
+}
+
+.hero-brand-img {
+  display: block;
+  max-width: min(100%, 420px);
+  height: auto;
 }
 
 .hero-id {
@@ -103,7 +196,7 @@ main {
   width: min(100%, 640px);
   height: auto;
   object-fit: contain;
-  max-width: 420px
+  max-width: 420px;
 }
 
 .hero-bottom {
@@ -815,6 +908,7 @@ html:has(#need-govern:checked) hr:has(+ :is(#complete-index, #hardware, #os, #co
     width: min(60px, 25vw);
     height: min(60px, 25vw);
     justify-self: end;
+    display: none;
   }
   .hero-center {
     padding: 1.25rem 0;
@@ -884,12 +978,22 @@ html:has(#need-govern:checked) hr:has(+ :is(#complete-index, #hardware, #os, #co
 <body id="top">
 
 <header class="hero" role="banner">
+  <div class="hero-bg" aria-hidden="true">
+    <div class="hero-bg-slide"></div>
+    <div class="hero-bg-slide"></div>
+    <div class="hero-bg-slide"></div>
+    <div class="hero-bg-slide"></div>
+    <div class="hero-bg-slide"></div>
+    <div class="hero-bg-slide"></div>
+    <div class="hero-bg-slide"></div>
+    <div class="hero-bg-slide"></div>
+  </div>
   <div class="hero-top">
-    <p class="hero-brand">CROPS CIRCLE</p>
+    <p class="hero-brand"><img src="images/crops_brand.png" alt="CROPS Circle" class="hero-brand-img" width="420"></p>
     <img src="images/crops_id.png" alt="CROPS Circle mark" class="hero-id" width="60" height="60">
   </div>
   <div class="hero-center">
-    <img src="images/crops_list.png" alt="CROPS CIRCLE" class="hero-center-image">
+    <!-- <img src="images/crops_list.png" alt="CROPS CIRCLE" class="hero-center-image"> -->
   </div>
   <div class="hero-bottom">
     <p class="hero-tagline script">It&rsquo;s Time to Get Out</p>
