@@ -23,7 +23,7 @@
   --mono: 'Courier New', Courier, monospace;
   --sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   --display: 'halogen', sans-serif;
-  --script: 'flood-std', sans-serif;
+  --script: 'felt-tip-senior', sans-serif;
 }
 
 html {
@@ -269,9 +269,10 @@ h3 {
   font-weight: 300;
 }
 
-.flood { 
+.script { 
   font-family: var(--script);
   font-size: 2rem;
+  text-transform: uppercase;
 }
 
 
@@ -302,6 +303,65 @@ a:focus {
 a:focus {
   outline: 1px dotted var(--link);
   outline-offset: 2px;
+}
+
+.back-to-top-fab {
+  position: fixed;
+  right: max(1rem, env(safe-area-inset-right));
+  bottom: max(1rem, env(safe-area-inset-bottom));
+  z-index: 50;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+.back-to-top-fab--visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.back-to-top {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin: 0;
+  padding: 0.55rem 1rem;
+  background: #fff;
+  color: #000;
+  border: 1px solid #000;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+}
+
+.back-to-top:hover,
+.back-to-top:focus {
+  background: #f0f0f0;
+  color: #000;
+  text-decoration: none;
+}
+
+.back-to-top:focus {
+  outline: 2px solid #000;
+  outline-offset: 2px;
+}
+
+.back-to-top-icon {
+  color: #000;
+  font-size: 1.05rem;
+  line-height: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .back-to-top-fab {
+    transition: none;
+  }
 }
 
 dl {
@@ -821,7 +881,7 @@ html:has(#need-govern:checked) hr:has(+ :is(#complete-index, #hardware, #os, #co
 }
 </style>
 </head>
-<body>
+<body id="top">
 
 <header class="hero" role="banner">
   <div class="hero-top">
@@ -832,7 +892,7 @@ html:has(#need-govern:checked) hr:has(+ :is(#complete-index, #hardware, #os, #co
     <img src="images/crops_list.png" alt="CROPS CIRCLE" class="hero-center-image">
   </div>
   <div class="hero-bottom">
-    <p class="hero-tagline">It&rsquo;s Time to Get Out</p>
+    <p class="hero-tagline script">It&rsquo;s Time to Get Out</p>
     <a href="#index" class="hero-index-link">View Index</a>
   </div>
 </header>
@@ -1814,10 +1874,31 @@ html:has(#need-govern:checked) hr:has(+ :is(#complete-index, #hardware, #os, #co
 <p>CROPS Circle — Censorship Resistance, Open Source, Privacy, Security</p>
 <!-- update monthly -->
 <p>Last indexed: March 2026</p>
-<p>No tracking. No cookies. No JavaScript.</p>
+<p>No tracking. No cookies. A back-to-top control appears after you scroll.</p>
 </div>
 </footer>
 
 </main>
+
+<div class="back-to-top-fab" id="back-to-top-fab">
+  <a href="#top" class="back-to-top" id="back-to-top-link" aria-label="Back to top of page" aria-hidden="true" tabindex="-1"><span class="back-to-top-icon" aria-hidden="true">&#8593;</span> Back to top</a>
+</div>
+<script>
+(function () {
+  var fab = document.getElementById('back-to-top-fab');
+  var link = document.getElementById('back-to-top-link');
+  if (!fab || !link) return;
+  var thresholdPx = 320;
+  function update() {
+    var show = window.scrollY >= thresholdPx || document.documentElement.scrollTop >= thresholdPx;
+    fab.classList.toggle('back-to-top-fab--visible', show);
+    link.setAttribute('aria-hidden', show ? 'false' : 'true');
+    link.tabIndex = show ? 0 : -1;
+  }
+  window.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update, { passive: true });
+  update();
+})();
+</script>
 </body>
 </html>
